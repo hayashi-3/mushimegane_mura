@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :participants
-  devise_for :organizers
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  devise_for :organizers, controllers: {
+    sessions: 'organizers/sessions'
+  }
+
+  devise_for :participants, controllers: {
+    registrations: 'participants/registrations',
+    sessions: 'participants/sessions'
+  }
+
 end
