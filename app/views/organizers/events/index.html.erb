@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <table class="table">
+      <% if @events.present? %>
+        <thead>
+          <tr>
+            <th>イベントID</th>
+            <th>イベント名</th>
+            <th>内容</th>
+            <th>日時</th>
+            <th>開催状況</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @events.each do |event| %>
+            <tr>
+              <td><%= event.id %></td>
+              <td><%= link_to event.event_name, organizers_event_path(event.id)%></td>
+              <td><%= event.content %></td>
+              <td><%= l event.date_and_time %></td>
+              <td>
+                <% if event.is_active == true %>
+                  開催中
+                <% else %>
+                  終了
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+        <tbody>
+      <% else %>
+        <td>新しいイベントを開催しましょう☺︎</td>
+      <% end %>
+    </table>
+  </div>
+</div>

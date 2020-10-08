@@ -1,0 +1,22 @@
+<table class="table">
+  <thead>
+      <tr>
+        <th>イベント名</th>
+        <th>イベント内容</th>
+        <th>開催日時</th>
+        <th>開催状況</th>
+      </tr>
+    </thead>
+  <tr>
+    <td><%= @event.event_name%></td>
+    <td><%= @event.content %></td>
+    <td><%= l @event.date_and_time %></td>
+      <% if @event.is_active == true %>
+        <td>開催中</td>
+        <td><%= link_to "参加する！", "#", class: "btn btn-primary btn-md" %></td>
+      <% else %>
+        <td>このイベントは終了しています</td>
+        <%= link_to "イベント一覧へ", events_path %>
+      <% end %>
+  </tr>
+</table>

@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+      <tr>
+        <th>会員ID</th>
+        <th>ニックネーム</th>
+        <th>電話番号</th>
+        <th>メール</th>
+        <th>ステータス</th>
+      </tr>
+    </thead>
+  <tr>
+    <td><%= @perticipant.id %>
+    <td><%= @perticipant.nickname %></td>
+    <td><%= @perticipant.telephone_numper %></td>
+    <td><%= @perticipant.email%></td>
+    <% if @perticipant.is_deleted == true %>
+      <td>退会済</td>
+    <% else %>
+      <td>在籍中</td>
+    <% end %>
+    <td><%= link_to '編集する', edit_organizers_participant_path, class: "btn btn-primary btn-md" %></td>
+  </tr>
+</table>
