@@ -14,11 +14,12 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    root 'homes#top'
+    root 'events#index'
     get 'about' => 'homes#about'
     resources :events do
       resource :reservation, only: [:edit, :update]
     end
+    resources :participants, only: [:show, :edit, :update]
   end
 
 end

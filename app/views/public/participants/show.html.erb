@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+    <strong>登録情報</strong><br>
+    <%= link_to "編集する", "#", method: :get, class: "btn btn-primary" %>
+    <%= link_to "パスワードを変更する", "#", method: :get, class: "btn btn-primary" %>
+
+    <table class="table table-bordered">  
+      <tr>
+        <th>ニックネーム</th>
+        <td><%= @participant.nickname %></td>
+      </tr>
+
+      <tr>
+        <th>電話番号</th>
+        <td><%= @participant.telephone_number %></td>
+      </tr>
+
+      <tr>
+        <th>メールアドレス</th>
+        <td><%= @participant.email %></td>
+      </tr>
+    </table>
+
+      <%= link_to "参加イベント一覧へ", "#", class: "btn btn-primary" %>
+      <%= link_to "参加後イベント一覧へ", "#", class: "btn btn-primary" %>
+
+  </div>
+  </div>
+</div>
