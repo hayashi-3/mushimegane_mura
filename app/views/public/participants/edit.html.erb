@@ -22,7 +22,7 @@
 		</tbody>
 	  </table>
 
-	  <%= f.submit "会員情報を更新する", class: "btn btn-primary btn-md"%>　<%= link_to "休民する？(退会ページに飛びます)", "#", class: "btn btn-danger btn-sm" %>
+	  <%= f.submit "会員情報を更新する", class: "btn btn-primary btn-md"%>　<%= link_to "休民する？(退会ページに飛びます)", participants_withdrawal_path(current_participant), class: "btn btn-danger btn-sm" %>
 　  <% end %>
 	</div>
 </div>

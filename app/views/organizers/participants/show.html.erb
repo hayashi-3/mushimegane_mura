@@ -9,15 +9,17 @@
       </tr>
     </thead>
   <tr>
-    <td><%= @perticipant.id %>
-    <td><%= @perticipant.nickname %></td>
-    <td><%= @perticipant.telephone_numper %></td>
-    <td><%= @perticipant.email%></td>
-    <% if @perticipant.is_deleted == true %>
+    <td><%= @participant.id %>
+    <td><%= @participant.nickname %></td>
+    <td><%= @participant.telephone_number %></td>
+    <td><%= @participant.email%></td>
+    <% if @participant.is_deleted == true %>
       <td>退会済</td>
     <% else %>
       <td>在籍中</td>
     <% end %>
     <td><%= link_to '編集する', edit_organizers_participant_path, class: "btn btn-primary btn-md" %></td>
+    <td><%= link_to 'メールする', organizers_info_new_path, class: "btn btn-primary btn-md" %></td>
+    <td><%= link_to '参加イベント', "#", class: "btn btn-primary btn-md" %></td>
   </tr>
 </table>

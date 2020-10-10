@@ -39,11 +39,7 @@ class Participants::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  protected
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :telephone_number, :email])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :telephone_number, :email])
-  end
+  # protected
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
@@ -64,4 +60,11 @@ class Participants::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+
+  private
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:nickname, :telephone_number, :email])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:nickname, :telephone_number, :email])
+  end
+
 end

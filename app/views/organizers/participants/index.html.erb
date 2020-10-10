@@ -1,7 +1,6 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <table class="table">
-      <% if @perticipants.present? %>
         <thead>
           <tr>
             <th>会員ID</th>
@@ -12,14 +11,14 @@
           </tr>
         </thead>
         <tbody>
-          <% @participants.each do |participant| %>
+          <% @participants.each do |p| %>
             <tr>
-              <td><%= participant.id %></td>
-              <td><%= link_to participant.nickname, organizers_participant_path(perticipant.id)%></td>
-              <td><%= @perticipant.nickname %></td>
-              <td><%= @perticipant.telephone_numper %></td>
+              <td><%= p.id %></td>
+              <td><%= link_to p.nickname, organizers_participant_path(p.id)%></td>
+              <td><%= p.telephone_number %></td>
+              <td><%= p.email %></td>
               <td>
-                <% if participant.is_deleted == true %>
+                <% if p.is_deleted == true %>
                   退会済
                 <% else %>
                   在籍中
@@ -28,9 +27,6 @@
             </tr>
           <% end %>
         <tbody>
-      <% else %>
-        <td>参加者を心待ちにしています☺︎</td>
-      <% end %>
     </table>
   </div>
 </div>
