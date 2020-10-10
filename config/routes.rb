@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   namespace :organizers do
     root 'events#index'
     resources :events, :participants, :reservations
+    get 'info' => 'infos#index'
+    get 'info/new' => 'infos#new'
+    put 'info' => 'infos#create'
   end
 
   scope module: :public do

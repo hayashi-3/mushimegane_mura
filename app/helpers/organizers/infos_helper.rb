@@ -1,0 +1,2 @@
+module Organizers::InfosHelper
+end
