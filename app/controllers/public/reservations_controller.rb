@@ -1,24 +1,25 @@
 class Public::ReservationsController < ApplicationController
 
-  def edit
+  def new
     @event = Event.find(params[:event_id])
-    @reservation = @event.reservations.new
+    @reservation = Reservation.new
   end
 
-  def update
-    if @event.update(update_event_params)
-      redirect_to root_path
+  def create
+    @event = Event.find(params[:event_id])
+    @participant = Participant.find(params[:participant_id])
+    @reservation = Reservation.new(params[:id])
+    if @reservation.save
+      thanks_path
     else
-      render "edit"
-      @event = Event.find(params[:event_id])
-      @reservation = @event.reservations.new
+      render "new"
     end
   end
 
   private
 
-  def update_event_params
-    params.require(:event).permit(:date_and_time, :event_name, :content, :is_active, reservations_attributes: [:number_of_reservations, :_destroy, :id])
+  def reservation_params
+    params.require(:reservation).permit(:participant_id, :event_id, :number_of_reserved, :attendance_status)
   end
 
 end

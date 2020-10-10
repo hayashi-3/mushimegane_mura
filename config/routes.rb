@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   }
 
   namespace :organizers do
-    root "events#index"
+    root 'events#index'
     resources :events, :participants, :reservations
   end
 
@@ -17,9 +17,13 @@ Rails.application.routes.draw do
     root 'events#index'
     get 'about' => 'homes#about'
     resources :events do
-      resource :reservation, only: [:edit, :update]
+      resource :reservation, only: [:new, :create]
     end
     resources :participants, only: [:show, :edit, :update]
+    get '/participants/:id/withdrawal' => 'participants#withdrawal'
+    put '/participants/:id/unsubscribe' => 'participants#unsubscribe'
+    get '/see_you' => 'homes#see_you'
+    get '/thanks' => 'homes#thanks'
   end
 
 end

@@ -16,6 +16,16 @@ class Public::ParticipantsController < ApplicationController
   end
   end
 
+  def withdrawal
+  end
+
+  def unsubscribe
+    @participant = Participant.find(current_participant.id)
+    @participant.update(is_deleted: true)
+    reset_session
+    redirect_to root_path
+  end
+
   private 
   def participant_params
     params.require(:participant).permit(:nickname, :email, :telephone_number, :is_deleted)

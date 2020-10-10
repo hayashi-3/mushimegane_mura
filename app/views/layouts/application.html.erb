@@ -15,7 +15,7 @@
         <%= render "shared/header_organizer" %>
         <%= yield %>
       </main>
-    <% elsif %>
+    <% elsif participant_signed_in? %>
       <main>
         <%= render "shared/header_before_participant" %>
         <%= yield %>

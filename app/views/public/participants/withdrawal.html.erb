@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-4">
+		<h3>本当に退会しますか？</h3>
+		<h3>退会すると、会員登録情報や<br>
+		これまでのイベント参加履歴が閲覧できなくなります。</h3>
+		<h3>退会する場合は、「退会する」をクリックしてください。</h3>
+		<%= link_to "退会しない", participant_path, method: :get, class: "btn btn-primary" %>
+		<%= link_to "退会する", see_you_path, method: :put, "data-confirm" => "退会処理に進みますか？", class: "btn btn-danger" %>
+		</div>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-5 col-md-offset-4">
+    <%= form_with model:[@event,@reservation], url:thanks_path, local: true do |f| %>
+
+      <table class="table">
+        <tr>
+          <th>イベント名:</th><td><%= @event.event_name%></td>
+        </tr>
+        <tr>
+          <th>イベント内容:</th><td><%= @event.content %></td>
+        </tr>
+        <tr>
+          <th>開催日時:</th><td><%= l @event.date_and_time %></td>
+        </tr>
+        <tr>
+          <th>開催状況:</th>
+          <% if @event.is_active == true %>
+            <td>開催中</td>
+          <% end %>
+        </tr>
+      </table>
+
+      <%= f.hidden_field :participant_id, :value => participant.id %>
+      <%= f.hidden_field :attendance_status, {value: '参加'} %>
+      
+      <%= f.submit '上記の内容で予約する',class:"btn btn-primary btn-md" %>
+      
+    <% end %>
+  </div>
+</div>

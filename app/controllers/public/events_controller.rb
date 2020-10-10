@@ -10,7 +10,7 @@ class Public::EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:participant_id, :date_and_time, :event_name, :image, :is_active, :content)
+    params.require(:event).permit(:participant_id, :date_and_time, :event_name, :image, :is_active, :content, :number_of_reservations)
   end
 
 end

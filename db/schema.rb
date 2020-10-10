@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_010050) do
     t.datetime "date_and_time", null: false
     t.string "event_name", null: false
     t.text "content", null: false
+    t.integer "number_of_reservations", default: 0, null: false
     t.string "image_id"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
@@ -62,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_10_08_010050) do
   create_table "reservations", force: :cascade do |t|
     t.integer "participant_id", null: false
     t.integer "event_id", null: false
-    t.integer "number_of_reservations", null: false
+    t.integer "number_of_reserved"
     t.integer "attendance_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
