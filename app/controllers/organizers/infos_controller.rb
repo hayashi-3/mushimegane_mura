@@ -1,4 +1,5 @@
 class Organizers::InfosController < ApplicationController
+  before_action :authenticate_organizer!
 
   def index     
   end

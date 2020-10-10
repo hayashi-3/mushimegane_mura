@@ -3,7 +3,7 @@
 		<%= form_with model: @event, url: organizers_events_path, method: :post, local: true do |f| %>
             <!-- イベント画像 -->
             <div class="form-group">
-				<%= attachment_image_tag @event, :image, fallback: "no_image.jpeg", :fill, 100, 100 %>
+				<%= attachment_image_tag @event, :image, :fill, 100, 100 %>
 				<%= f.attachment_field :image, placeholder: "Image" %>
 			</div>
 

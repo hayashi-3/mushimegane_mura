@@ -2,14 +2,14 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">イベント一覧<span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                  <%= link_to "イベント一覧", organizers_events_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">イベント投稿</a>
+                  <%= link_to "イベント投稿", new_organizers_event_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">会員一覧</a>
+                  <%= link_to "会員一覧", organizers_participants_path, class: "nav-link" %>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">イベント連絡メール</a>

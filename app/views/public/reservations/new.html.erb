@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-5 col-md-offset-4">
-    <%= form_with model:[@event,@reservation], url:thanks_path, local: true do |f| %>
+    <%= form_with model:[@event,@reservation], local: true do |f| %>
 
       <table class="table">
         <tr>
@@ -20,7 +20,7 @@
         </tr>
       </table>
 
-      <%= f.hidden_field :participant_id, :value => participant.id %>
+      <%= f.hidden_field :event_id, value: @event.id %>
       <%= f.hidden_field :attendance_status, {value: '参加'} %>
       
       <%= f.submit '上記の内容で予約する',class:"btn btn-primary btn-md" %>

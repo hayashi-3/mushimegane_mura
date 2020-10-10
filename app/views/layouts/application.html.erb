@@ -15,14 +15,14 @@
         <%= render "shared/header_organizer" %>
         <%= yield %>
       </main>
-    <% elsif participant_signed_in? %>
+    <% elsif participant_signed_in? && /\/organizers/ !~ request.fullpath %>
       <main>
-        <%= render "shared/header_before_participant" %>
+        <%= render "shared/header_participant" %>
         <%= yield %>
       </main>
     <% else %>
       <main>
-        <%= render "shared/header_participant" %>
+        <%= render "shared/header_before_participant" %>
         <%= yield %>
       </main>
     <% end %>

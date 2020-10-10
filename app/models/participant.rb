@@ -5,6 +5,7 @@ class Participant < ApplicationRecord
          :recoverable, :rememberable, :validatable
   
   has_many :reservations, dependent: :destroy
+  has_many :reserved_events, through: :reservation, source: :event 
   
   def active_for_authentication?
     super && (self.is_deleted == false)

@@ -1,4 +1,5 @@
 class Public::EventsController < ApplicationController
+  before_action :authenticate_participant!, only: [:show]
 
   def index
     @events = Event.all

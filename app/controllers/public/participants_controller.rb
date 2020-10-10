@@ -1,4 +1,6 @@
 class Public::ParticipantsController < ApplicationController
+  before_action :authenticate_participant!
+
   def show
     @participant = Participant.find(params[:id])
   end

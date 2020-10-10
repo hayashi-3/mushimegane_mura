@@ -1,4 +1,5 @@
 class Public::ReservationsController < ApplicationController
+  before_action :authenticate_participant!
 
   def new
     @event = Event.find(params[:event_id])
@@ -6,20 +7,14 @@ class Public::ReservationsController < ApplicationController
   end
 
   def create
-    @event = Event.find(params[:event_id])
-    @participant = Participant.find(params[:participant_id])
-    @reservation = Reservation.new(params[:id])
-    if @reservation.save
-      thanks_path
-    else
-      render "new"
-    end
+    @reservation = Reservation.create!(participant_id: current_participant.id, event_id: params[:event_id])
+    redirect_to thanks_path
   end
 
   private
 
   def reservation_params
-    params.require(:reservation).permit(:participant_id, :event_id, :number_of_reserved, :attendance_status)
+    params.require(:reservation).permit(:participant_id, :event_id, :attendance_status)
   end
 
 end
