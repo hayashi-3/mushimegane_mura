@@ -1,5 +1,5 @@
 <div class="container">
-  <h2>予約イベント</h2>
+  <h2>予約状況一覧</h2>
   <table class="table">
     <thead>
         <tr>
@@ -9,13 +9,10 @@
         </tr>
     </thead>
     <tbody>
-        <% @reservations.each do |r| %>
+        <% @event.reservations.each do |e| %>
         <tr>
-            <td><%= attachment_image_tag e, :image , fallback: "no_image.jpeg", size: '40x40'%></td>
-            <td><%= e.event_name %></td>
-            <td><%= e.content %></td>
-            <td><%= l e.date_and_time %></td>
-            <td><%= link_to "イベント詳細", event_path(@event) %></td>
+            <td><%= e.participant.nickname %></td>
+            <%#= link_to "イベント詳細", event_path(@event.reservation.id) %>
         </tr>
         <% end %>
     </tbody>
