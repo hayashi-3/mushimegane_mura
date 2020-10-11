@@ -20,11 +20,10 @@
         </tr>
       </table>
 
-      <%= f.hidden_field :event_id, value: @event.id %>
-      <%= f.hidden_field :attendance_status, {value: '参加'} %>
-      
-      <%= f.submit '上記の内容で予約する',class:"btn btn-primary btn-md" %>
-      
+        <%= f.hidden_field :event_id, value: @event.id %>
+        <%= f.hidden_field :attendance_status, {value: '参加'} %>
+        
+        <%= f.submit '上記の内容で予約する',class:"btn btn-primary btn-md" %>
     <% end %>
   </div>
 </div>

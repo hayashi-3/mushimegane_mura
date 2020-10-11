@@ -12,8 +12,15 @@ class Public::ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.create!(participant_id: current_participant.id, event_id: params[:event_id])
-    redirect_to thanks_path
+    @event = Event.find(params[:event_id])
+    @reservation = current_participant.reservations.new(reservation_params)
+    @reservation.event_id = @event.id
+    if @reservation.save
+      redirect_to thanks_path
+    else
+      render :new
+      @reservation = Reservation.new
+    end
   end
 
   private
