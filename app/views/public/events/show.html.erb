@@ -4,7 +4,7 @@
         <th>イベント名</th>
         <th>イベント内容</th>
         <th>開催日時</th>
-        <th>開催状況</th>
+        <th>予約状況</th>
       </tr>
     </thead>
   <tr>
@@ -14,7 +14,7 @@
     <td><%= l @event.date_and_time %></td>
     <td><%= @event.number_of_reservations %></td>
     <% if @event.is_active == true %>
-      <td>開催中</td>
+      <td>予約受付中</td>
       <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-primary btn-md" %></td>
     <% else %>
       <td>このイベントは終了しています</td>

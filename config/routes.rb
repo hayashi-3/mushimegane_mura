@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     root 'events#index'
     get 'about' => 'homes#about'
     resources :events do
-      resources :reservations, only: [:new, :create]
+      resources :reservations, only: [:new, :create, :index]
     end
     resources :participants, only: [:show, :edit, :update]
     get '/participants/:id/withdrawal' => 'participants#withdrawal', as: 'participants_withdrawal'

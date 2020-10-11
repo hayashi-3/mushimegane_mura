@@ -33,8 +33,8 @@
 
 			<!-- 開催ステータス -->
 			<div class="form-group">
-                <%= f.label :is_active, "開催状況"%>
-                <%= f.select :is_active, {'開催中': true, '終了': false}, { class: 'form-control' , required: true } %>
+                <%= f.label :is_active, "予約受付状況"%>
+                <%= f.select :is_active, {'予約受付中': true, '終了': false}, { class: 'form-control' , required: true } %>
 			</div>
 			<%= f.submit '新規登録',class:"btn btn-primary btn-md" %>
 		<% end %>

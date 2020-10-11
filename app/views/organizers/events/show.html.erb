@@ -6,7 +6,7 @@
         <th>イベント内容</th>
         <th>開催日時</th>
         <th>参加上限人数</th>
-        <th>開催状況</th>
+        <th>予約状況</th>
         <th></th>
       </tr>
     </thead>
@@ -17,7 +17,7 @@
     <td><%= l @event.date_and_time %></td>
     <td><%= @event.number_of_reservations %></td>
       <% if @event.is_active == true %>
-        <td>開催中</td>
+        <td>予約受付中</td>
       <% else %>
         <td>終了</td>
       <% end %>

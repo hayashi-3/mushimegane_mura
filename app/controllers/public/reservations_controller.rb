@@ -1,6 +1,12 @@
 class Public::ReservationsController < ApplicationController
   before_action :authenticate_participant!
 
+  def index
+    @participant = Participant.find(current_participant.id)
+    @reservations = @participant.reserved_events.all
+    @event = Event.find(params[:event_id])
+  end
+
   def new
     @event = Event.find(params[:event_id])
     @reservation = Reservation.new
