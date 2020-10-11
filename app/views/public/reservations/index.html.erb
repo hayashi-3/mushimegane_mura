@@ -9,15 +9,14 @@
         </tr>
     </thead>
     <tbody>
-        <% @participant.reserved_events.where.not(id: current_participant.id).each do |p| %>
+        <% @participant.reserved_events.each do |p| %>
         <tr>
             <td><%= attachment_image_tag p, :image , fallback: "no_image.jpeg", size: '40x40'%></td>
             <td><%= p.event_name %></td>
             <td><%= p.content %></td>
             <td><%= l p.date_and_time %></td>
-            <td><%= link_to "イベント詳細", event_path(@event) %></td>
         </tr>
         <% end %>
     </tbody>
   </table>
-</div>
+</div> 

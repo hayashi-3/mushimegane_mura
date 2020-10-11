@@ -4,7 +4,6 @@ class Public::ReservationsController < ApplicationController
   def index
     @participant = Participant.find(current_participant.id)
     @reservations = @participant.reserved_events.all
-    @event = Event.find(params[:event_id])
   end
 
   def new
