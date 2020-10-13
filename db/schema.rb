@@ -14,9 +14,11 @@ ActiveRecord::Schema.define(version: 2020_10_10_050207) do
 
   create_table "event_comments", force: :cascade do |t|
     t.integer "participant_id", null: false
+    t.integer "event_id", null: false
     t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_event_comments_on_event_id"
     t.index ["participant_id"], name: "index_event_comments_on_participant_id"
   end
 
@@ -34,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_050207) do
   end
 
   create_table "infos", force: :cascade do |t|
-    t.integer "participant_id", null: false
+    t.integer "participant_id"
     t.text "message", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

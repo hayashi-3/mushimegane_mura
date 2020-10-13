@@ -5,22 +5,26 @@ class Organizers::EventsController < ApplicationController
     @events = Event.all
   end
 
+  def show
+    @event = Event.find(params[:id])
+    @event_comment = EventComment.new
+    @event_comments = EventComment.all
+  end
+
   def new
     @event = Event.new
   end
 
   def create
     @event = Event.new(event_params)
+    @event.participant_id = current_participant.id
   if @event.save
     redirect_to organizers_event_path(@event.id)
   else
-    redirect_back(fallback_location: root_path)
+    render "new"
   end
   end
 
-  def show
-    @event = Event.find(params[:id])
-  end
 
   def edit
     @event = Event.find(params[:id])

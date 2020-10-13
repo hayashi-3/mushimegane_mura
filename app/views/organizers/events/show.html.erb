@@ -1,26 +1,27 @@
-<table class="table">
-  <thead>
+<div class="container">
+  <table class="table">
+    <thead>
       <tr>
-        <th>イベントイメージ<th>
+        <th>イメージ<th>
         <th>イベント名</th>
         <th>イベント内容</th>
         <th>開催日時</th>
         <th>参加上限人数</th>
         <th>予約状況</th>
-        <th></th>
       </tr>
     </thead>
-  <tr>
-    <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
-    <td><%= @event.event_name%></td>
-    <td><%= @event.content %></td>
-    <td><%= l @event.date_and_time %></td>
-    <td><%= @event.number_of_reservations %></td>
-      <% if @event.is_active == true %>
-        <td>予約受付中</td>
-      <% else %>
-        <td>終了</td>
-      <% end %>
-    <td><%= link_to '編集する', edit_organizers_event_path, class: "btn btn-primary btn-md" %></td>
-  </tr>
-</table>
+    <tr>
+      <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
+      <td><%= @event.event_name%></td>
+      <td><%= @event.content %></td>
+      <td><%= l @event.date_and_time %></td>
+      <td>　<%= @event.number_of_reservations %>人</td>
+        <% if @event.is_active == true %>
+          <td>予約受付中</td>
+        <% else %>
+          <td>終了</td>
+        <% end %>
+      <td><%= link_to '編集する', edit_organizers_event_path, class: "btn btn-primary btn-md" %></td>
+    </tr>
+  </table>
+</div>

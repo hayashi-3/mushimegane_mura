@@ -12,9 +12,9 @@
     <tbody>
       <% @event.reservations.each do |e| %>
         <tr>
-            <td><%= e.participant.nickname %></td>
-            <td><%= e.participant.email %></td>
-            <td><%= e.attendance_status %></td>
+          <td><%= e.participant.nickname %></td>
+          <td><%= e.participant.email %></td>
+          <td><%= e.attendance_status %></td>
         </tr>
       <% end %>
     </tbody>

@@ -9,24 +9,27 @@ Rails.application.routes.draw do
   }
 
   namespace :organizers do
-    resources :participants
+    resources :participants do
+      resources :infos, only: [:index, :new, :create]
+    end
     resources :events do
       resources :reservations, only: [:index]
     end
-    get 'info' => 'infos#index'
-    get 'info/new' => 'infos#new'
-    put 'info' => 'infos#create'
   end
 
   scope module: :public do
     root 'events#index'
     get 'about' => 'homes#about'
+
     resources :events do
       resources :reservations, only: [:new, :create]
+      resources :event_commernts, only: [:create, :destroy]
     end
+    
     resources :participants, only: [:show, :edit, :update] do
       resources :reservations, only: [:index]
     end
+    
     get '/participants/:id/withdrawal' => 'participants#withdrawal', as: 'participants_withdrawal'
     put '/participants/:id/unsubscribe' => 'participants#unsubscribe'
     get '/see_you' => 'homes#see_you'
