@@ -19,4 +19,3 @@ class Public::EventCommentsController < ApplicationController
 	end
 
 end
-end
