@@ -15,7 +15,6 @@ class Organizers::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
-    @event.participant_id = current_participant.id
   if @event.save
     redirect_to organizers_event_path(@event.id)
   else
@@ -35,6 +34,13 @@ class Organizers::EventsController < ApplicationController
   else
     redirect_back(fallback_location: root_path)
   end
+  end
+
+  def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    flash[:notice] = "イベントを削除しました"
+    redirect_to organizers_events_path
   end
 
   private

@@ -1,5 +1,6 @@
 <div class="container">
   <table class="table">
+
     <thead>
       <tr>
         <th>イメージ<th>
@@ -10,18 +11,26 @@
         <th>予約状況</th>
       </tr>
     </thead>
-    <tr>
-      <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
-      <td><%= @event.event_name%></td>
-      <td><%= @event.content %></td>
-      <td><%= l @event.date_and_time %></td>
-      <td>　<%= @event.number_of_reservations %>人</td>
-        <% if @event.is_active == true %>
-          <td>予約受付中</td>
-        <% else %>
-          <td>終了</td>
-        <% end %>
-      <td><%= link_to '編集する', edit_organizers_event_path, class: "btn btn-primary btn-md" %></td>
-    </tr>
+
+    <tbody>
+      <tr>
+        <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
+        
+        <td><%= @event.event_name%></td>
+        <td><%= @event.content %></td>
+        <td><%= l @event.date_and_time %></td>
+        <td>　<%= @event.number_of_reservations %>人</td>
+          <% if @event.is_active == true %>
+            <td>予約受付中</td>
+          <% else %>
+            <td>終了</td>
+          <% end %>
+        
+        <td><%= link_to '編集する', edit_organizers_event_path, class: "btn btn-primary btn-md" %></td>
+        <td><%= link_to '削除する', organizers_event_path, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn btn-danger btn-md" %></td>
+      
+      </tr>
+    </tbody>
+
   </table>
 </div>
