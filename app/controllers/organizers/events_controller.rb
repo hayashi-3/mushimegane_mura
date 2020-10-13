@@ -7,8 +7,6 @@ class Organizers::EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
-    @event_comment = EventComment.new
-    @event_comments = EventComment.all
   end
 
   def new
@@ -17,6 +15,7 @@ class Organizers::EventsController < ApplicationController
 
   def create
     @event = Event.new(event_params)
+    @event.participant_id = current_participant.id
   if @event.save
     redirect_to organizers_event_path(@event.id)
   else

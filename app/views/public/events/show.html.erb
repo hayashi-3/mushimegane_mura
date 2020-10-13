@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <table class="table">
+
       <thead>
           <tr>
             <th></th>
@@ -11,39 +12,40 @@
             <th>受付状況</th>
             <th>予約状況</th>
           </tr>
-        </thead>
+      </thead>
+
         <tbody>
-      <tr>
-        <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
-        <td><%= @event.event_name%></td>
-        <td><%= @event.content %></td>
-        <td><%= l @event.date_and_time %></td>
-        <td>　　<%= @event.number_of_reservations %>人</td>
-        <% if @event.is_active == true %>
-          <td>予約受付中</td>
-          <td>　<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %></td>
-          <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-primary btn-md" %></td>
-        <% else %>
-          <td>このイベントは終了しています</td>
-          <td><%= link_to "イベント一覧へ", events_path %></td>
-        <% end %>
-      </tr>
-      <% @event_comments.each do |e| %>
+          <tr>
+            <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
+            <td><%= @event.event_name%></td>
+            <td><%= @event.content %></td>
+            <td><%= l @event.date_and_time %></td>
+            <td>　　<%= @event.number_of_reservations %>人</td>
+            <% if @event.is_active == true %>
+              <td>予約受付中</td>
+              <td>　<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %></td>
+              <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-primary btn-md" %></td>
+            <% else %>
+              <td>このイベントは終了しています</td>
+              <td><%= link_to "イベント一覧へ", events_path %></td>
+            <% end %>
+          </tr>
+
+          <% @event.event_comments.each do |e| %>
               <tr>
-                  <%= e.participant.nickname %></td>
-                    <td><%= e.comment %></td>
-                  </td>
+                  <td><%= e.participant.nickname %></td>
+                  <td><%= e.comment %></td>
               </tr>
             <% end %>
-    <!-- bookcommentここまで -->
-    <!-- コメント投稿フォーム -->
-      <tr>
-        <td><%= form_with model:[@event,@event_commernt], local: true do |f| %><td>
-        <td><%= f.text_area :comment, id: "comment__textarea", class: "col-xs-12",placeholder: "コメントをここに" %></td>
-        <td><%= f.submit "送信" %></td>
-          <% end %>
-      </tr>
-      </tbody>
+        </tbody>
     </table>
+    <!-- コメント投稿フォーム -->
+        <%= form_with model:[@event,@event_comment], local: true do |f| %>
+          <div class="form-group">
+            <%= f.text_area :comment, autofocus: true %>
+			    </div>
+          <%= f.submit "送信" %>
+        <% end %>
+      
   </div>
 </div>

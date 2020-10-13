@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
     resources :events do
       resources :reservations, only: [:new, :create]
-      resources :event_commernts, only: [:create, :destroy]
+      resource :event_comments, only: [:create, :destroy]
     end
     
     resources :participants, only: [:show, :edit, :update] do
@@ -31,7 +31,7 @@ Rails.application.routes.draw do
     end
     
     get '/participants/:id/withdrawal' => 'participants#withdrawal', as: 'participants_withdrawal'
-    put '/participants/:id/unsubscribe' => 'participants#unsubscribe'
+    put '/participants/:id/unsubscribe' => 'participants#unsubscribe', as: 'participants_unsubscribe'
     get '/see_you' => 'homes#see_you'
     get '/thanks' => 'homes#thanks'
   end
