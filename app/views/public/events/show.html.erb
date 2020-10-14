@@ -31,21 +31,26 @@
             <% end %>
           </tr>
 
+          <!-- 参加者コメント -->
           <% @event.event_comments.each do |e| %>
               <tr>
                   <td><%= e.participant.nickname %></td>
                   <td><%= e.comment %></td>
+                  <% if e.participant_id == current_participant.id %>
+                    <td><%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, class: "btn btn-danger btn-md" %></td>
+                  <% end %>
               </tr>
             <% end %>
-        </tbody>
-    </table>
-    <!-- コメント投稿フォーム -->
+        
+        <!-- コメント投稿フォーム -->
         <%= form_with model:[@event,@event_comment], local: true do |f| %>
-          <div class="form-group">
-            <%= f.text_area :comment, autofocus: true %>
-			    </div>
-          <%= f.submit "送信" %>
+          <tr>
+            <td><%= f.text_area :comment, autofocus: true %></td>
+            <td><%= f.submit "送信" %></td>
+          </tr>
         <% end %>
       
+        </tbody>
+    </table>
   </div>
 </div>

@@ -6,7 +6,7 @@ class Public::EventsController < ApplicationController
   end
 
   def show
-    @event = Event.find_by(params[:id])
+    @event = Event.find(params[:id])
     @event_comment = EventComment.new
     @event_comments = EventComment.all
   end
