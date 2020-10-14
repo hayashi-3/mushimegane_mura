@@ -11,13 +11,13 @@ class Reservation < ApplicationRecord
   }
 
   validate :max_reserve_restrictions
-
-  private
-
   def max_reserve_restrictions
-    if participant_id.present? && participant.reservations.count >= event.number_of_reservations
+    if participant_id.present? && participant.reservations.count > event.number_of_reservations
       errors.add(:base, ": 申し訳ございません、予約がいっぱいです。")
     end
   end
 
 end
+
+# 処理が動いているか→14、15の間　def　メソッドに入ってる？（byebugで処理が止まればメソッドの処理がされてる）
+# 分岐が正しいか→byebugで変数確認　if文が正しいかみる

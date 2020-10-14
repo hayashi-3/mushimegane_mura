@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
     
     resources :participants, only: [:show, :edit, :update] do
-      resources :reservations, only: [:index]
+      resources :reservations, only: [:index, :destroy]
     end
     
     get '/participants/:id/withdrawal' => 'participants#withdrawal', as: 'participants_withdrawal'

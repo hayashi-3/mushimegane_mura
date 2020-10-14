@@ -23,6 +23,14 @@ class Public::ReservationsController < ApplicationController
     end
   end
 
+  def destroy
+    @event = Event.find(params[:event_id])
+    @reservations = current_participant.reservations.find_by(@event)
+    @participant = Participant.find(params[:participant_id])
+    @reservation.destroy
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   def reservation_params

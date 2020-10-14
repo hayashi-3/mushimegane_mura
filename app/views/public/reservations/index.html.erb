@@ -17,6 +17,11 @@
               <td><%= p.event_name %></td>
               <td><%= p.content %></td>
               <td><%= l p.date_and_time %></td>
+
+              <% if @reservation.participant_id == current_participant.id %>
+                <td><%= link_to "イベントキャンセル",participant_reservation_path(@participant,@reservation), method: :delete, class: "btn btn-danger btn-md", data: {"turbolinks"=>false} %></td>
+              <% end %>
+
           </tr>
         <% end %>
     </tbody>

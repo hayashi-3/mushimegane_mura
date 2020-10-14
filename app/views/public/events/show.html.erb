@@ -37,13 +37,13 @@
                   <td><%= e.participant.nickname %></td>
                   <td><%= e.comment %></td>
                   <% if e.participant_id == current_participant.id %>
-                    <td><%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, class: "btn btn-danger btn-md" %></td>
+                    <td><%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, class: "btn btn-danger btn-md", data: {"turbolinks"=>false} %></td>
                   <% end %>
               </tr>
             <% end %>
         
         <!-- コメント投稿フォーム -->
-        <%= form_with model:[@event,@event_comment], local: true do |f| %>
+        <%= form_with model:[@event,@event_comment], local: true, data: {"turbolinks"=>false} do |f| %>
           <tr>
             <td><%= f.text_area :comment, autofocus: true %></td>
             <td><%= f.submit "送信" %></td>

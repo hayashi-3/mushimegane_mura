@@ -7,10 +7,9 @@ class Public::EventCommentsController < ApplicationController
 	  @event_comment.participant_id = current_participant.id
 	  @event_comment.event_id = @event.id
 	  if @event_comment.save
-	    flash[:success] = "Comment was successfully created."
 	    redirect_back(fallback_location: root_path)
 	  else
-	    redirect_back(fallback_location: root_path)
+	    redirect_back(fallback_location: event_path(@event))
 	  end
 	end
 
