@@ -15,6 +15,7 @@
           <td><%=e.participant.nickname %></td>
           <td><%= e.participant.email %></td>
           <td><%= e.attendance_status %></td>
+          <td><%= link_to "メールする", new_organizers_participant_info_path(e.participant.id) %></td>
         </tr>
       <% end %>
     </tbody>

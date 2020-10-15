@@ -8,6 +8,7 @@ class Participant < ApplicationRecord
   has_many :reservation
   has_many :reserved_events, through: :reservation, source: :event
   has_many :event_comments, dependent: :destroy
+  has_many :infos
   
   def active_for_authentication?
     super && (self.is_deleted == false)

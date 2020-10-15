@@ -12,7 +12,8 @@ class Organizers::InfosController < ApplicationController
   def create
     @info = Info.new(info_params)
     @participant = Participant.find(params[:participant_id])
-    if @info.save
+    @info.participant_id = @participant.id
+    if @info.save!
       InfoMailer.info_mail(@info, @participant).deliver_now
       flash[:success] = 'メールを受付ました'
       redirect_to organizers_participant_infos_path
@@ -23,7 +24,7 @@ class Organizers::InfosController < ApplicationController
 
   private
   def info_params
-    params.require(:info).permit(:message, :participant_id)
+    params.require(:info).permit(:message)
   end
 
 end
