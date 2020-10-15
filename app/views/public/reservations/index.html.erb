@@ -13,15 +13,14 @@
     <tbody>
         <% @participant.reserved_events.each do |p| %>
           <tr>
-              <td><%= attachment_image_tag p, :image , fallback: "no_image.jpeg", size: '40x40'%></td>
-              <td><%= p.event_name %></td>
-              <td><%= p.content %></td>
-              <td><%= l p.date_and_time %></td>
+            <td><%= attachment_image_tag p, :image , fallback: "no_image.jpeg", size: '40x40'%></td>
+            <td><%= p.event_name %></td>
+            <td><%= p.content %></td>
+            <td><%= l p.date_and_time %></td>
 
-              <% if @reservation.participant_id == current_participant.id %>
-                <td><%= link_to "イベントキャンセル",participant_reservation_path(@participant,@reservation), method: :delete, class: "btn btn-danger btn-md", data: {"turbolinks"=>false} %></td>
-              <% end %>
-
+            <%# if p.participant_id == current_participant.id %>
+              <td><%= link_to "イベントキャンセル",participant_reservation_path(id: current_participant.id), method: :delete, class: "btn btn-danger btn-md", data: {"turbolinks"=>false} %></td>
+            <%# end %>
           </tr>
         <% end %>
     </tbody>

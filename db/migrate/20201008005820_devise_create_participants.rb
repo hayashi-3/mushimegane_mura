@@ -3,7 +3,7 @@
 class DeviseCreateParticipants < ActiveRecord::Migration[5.2]
   def change
     create_table :participants do |t|
-      t.text :nickname, null: false
+      t.string :nickname, null: false
       t.string :telephone_number, null: false
       t.boolean :is_deleted, null: false, default: false
       ## Database authenticatable

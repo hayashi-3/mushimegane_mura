@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_050207) do
   end
 
   create_table "participants", force: :cascade do |t|
-    t.text "nickname", null: false
+    t.string "nickname", null: false
     t.string "telephone_number", null: false
     t.boolean "is_deleted", default: false, null: false
     t.string "email", default: "", null: false
