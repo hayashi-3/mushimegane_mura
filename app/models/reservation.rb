@@ -12,8 +12,7 @@ class Reservation < ApplicationRecord
 
   validate :max_reserve_restrictions
   def max_reserve_restrictions
-    byebug
-    if number_of_reservations < participant.reservations.count
+    if event.number_of_reservations < participant_id
       errors.add(:base, ": 申し訳ございません、予約がいっぱいです。")
     end
   end
