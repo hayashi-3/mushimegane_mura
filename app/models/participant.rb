@@ -3,6 +3,8 @@ class Participant < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  validates :nickname, :telephone_number, presence: true
   
   has_many :reservations, dependent: :destroy
   has_many :reservation

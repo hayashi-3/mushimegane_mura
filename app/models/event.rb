@@ -7,10 +7,9 @@ class Event < ApplicationRecord
   
   attachment :image
 
+  validates :date_and_time, :event_name, :content, :number_of_reservations, :is_active, presence: true
+
   validate :date_cannot_be_in_the_past
-
-  private
-
   def date_cannot_be_in_the_past
     if date_and_time.present? && date_and_time < Date.today
       errors.add(:date_and_time, "過去の日付は使用できません")

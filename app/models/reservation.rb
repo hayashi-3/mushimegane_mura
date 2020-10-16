@@ -18,6 +18,3 @@ class Reservation < ApplicationRecord
   end
 
 end
-
-# 処理が動いているか→14、15の間　def　メソッドに入ってる？（byebugで処理が止まればメソッドの処理がされてる)・・・メソッドには入ってそう
-# 分岐が正しいか→byebugで変数確認　if文が正しいかみる・・・これが問題
