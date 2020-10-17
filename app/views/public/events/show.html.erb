@@ -41,16 +41,13 @@
                   <% end %>
               </tr>
             <% end %>
-        
-        <!-- コメント投稿フォーム -->
-        <%= form_with model:[@event,@event_comment], local: true, data: {"turbolinks"=>false} do |f| %>
-          <tr>
-            <td><%= f.text_area :comment, autofocus: true %></td>
-            <td><%= f.submit "送信" %></td>
-          </tr>
-        <% end %>
-      
         </tbody>
     </table>
+
+    <!-- コメント投稿フォーム -->
+    <%= form_with model:[@event,@event_comment], local: true, data: {"turbolinks"=>false} do |f| %>
+      <%= f.text_area :comment, autofocus: true %>
+      <%= f.submit "送信" %>
+    <% end %>
   </div>
 </div>

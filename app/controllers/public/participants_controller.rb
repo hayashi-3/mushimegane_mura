@@ -1,5 +1,13 @@
 class Public::ParticipantsController < ApplicationController
   before_action :authenticate_participant!
+  before_action :correct_participant
+
+  def correct_participant
+    participant = Participant.find(params[:id])
+      if current_participant != participant
+        redirect_to participant_path(current_participant)
+      end
+  end
 
   def show
     @participant = Participant.find(params[:id])

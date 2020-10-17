@@ -3,7 +3,7 @@
     <div>ようこそ、虫めがね村へ<br>
       虫めがね村では哲学書や教養書を取り扱った読書会を開催しています。<br>
       当サイトは会員制で、会員登録後に読書会の予約ができます。<br>
-      イベントの様子や主催者については<%= link_to "こちら", about_path %>をご覧ください。
+      イベントの様子や主催者については<%= link_to "こちら", root_path %>をご覧ください。
     <div>
     <table class="table">
       <% if @events.present? %>
@@ -35,9 +35,15 @@
             </tr>
           <% end %>
         <tbody>
+      </table>
       <% else %>
         <td>イベントが開催されるまで少々お待ちください</td>
       <% end %>
     </table>
+    <span id="back">
+      <a href="">
+        <i class="fas fa-hand-point-up"></i>
+      </a>
+    </span>
   </div>
 </div>

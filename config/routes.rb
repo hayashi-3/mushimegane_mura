@@ -18,8 +18,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :public do
-    root 'events#index'
-    get 'about' => 'homes#about'
+    root 'homes#about'
 
     resources :events do
       resources :reservations, only: [:new, :create]
