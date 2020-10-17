@@ -13,6 +13,10 @@
   </head>
 
   <body>
+    <div>
+      <%= notice %>
+      <%= alert %>
+    </div>
     <% if organizer_signed_in? or /\/organizers/ =~ request.fullpath %>
       <main>
         <%= render "shared/header_organizer" %>

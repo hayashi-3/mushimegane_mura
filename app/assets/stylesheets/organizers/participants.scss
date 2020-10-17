@@ -1,3 +1,36 @@
 // Place all the styles related to the organizers/participants controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#aboutpage-body {
+  background-color: black;
+}
+
+.introduce-text {
+  color: rgb(250, 250, 250);
+  font-family: 'Sawarabi Mincho', sans-serif;
+}
+
+#introduce-text-big {
+    color: rgb(250, 250, 250);
+    font-size: 50px;
+}
+
+
+.c-marker {
+    background: -webkit-linear-gradient(left, rgb(238, 247, 111) 50%, transparent 50%);
+    background: -moz-linear-gradient(left, rgb(238, 247, 111) 50%, transparent 50%);
+    background: linear-gradient(left, rgb(238, 247, 111) 50%, transparent 50%);
+  background-repeat: no-repeat;
+  background-size: 200% .8em; 
+    background-position: 100% .5em;
+    transition: 2s;
+}
+.c-marker.is-active{
+    background-position: 0% .5em;
+}
+
+.parson-texit {
+  font-size: 20px;
+  color: white;
+  font-family: 'Sawarabi Mincho', sans-serif;
+}

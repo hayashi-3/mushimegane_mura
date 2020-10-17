@@ -21,10 +21,20 @@
             <td><%= @event.content %></td>
             <td><%= l @event.date_and_time %></td>
             <td>　　<%= @event.number_of_reservations %>人</td>
+            
+            <!--予約ステータス　受付中-->
             <% if @event.is_active == true %>
               <td>予約受付中</td>
               <td>　<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %></td>
-              <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-primary btn-md" %></td>
+
+              <!--もし予約中の人がいたら予約ボタンを非表示-->
+              <% if @event.reserved_by?(current_participant) %>
+                <td>予約済みです。</td>
+              <% else %>
+                <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-primary btn-md" %></td>
+              <% end %>
+            
+            <!--予約ステータス　終了-->
             <% else %>
               <td>このイベントは終了しています</td>
               <td><%= link_to "イベント一覧へ", events_path %></td>

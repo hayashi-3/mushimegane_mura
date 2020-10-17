@@ -7,6 +7,10 @@ class Event < ApplicationRecord
   
   attachment :image
 
+  def reserved_by?(participant)
+    reservations.where(participant_id: participant.id).exists?
+  end
+
   validates :date_and_time, :event_name, :content, :number_of_reservations, :is_active, presence: true
 
   validate :date_cannot_be_in_the_past

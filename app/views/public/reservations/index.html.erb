@@ -2,28 +2,35 @@
   <h2>予約イベント</h2>
   <table class="table">
     <thead>
-        <tr>
-        <th></th>
-        <th>イベント名</th>
-        <th>イベント内容</th>
-        <th>開催日時</th>
-        <th colspan="3"></th>
-        </tr>
+      <tr>
+      <th></th>
+      <th>イベント名</th>
+      <th>イベント内容</th>
+      <th>開催日時</th>
+      <th colspan="3"></th>
+      </tr>
     </thead>
     <tbody>
-        <% @participant.reserved_events.each do |p| %>
-          <tr>
-            <td><%= attachment_image_tag p, :image , fallback: "no_image.jpeg", size: '40x40'%></td>
-            <td><%= link_to p.event_name, event_path(p) %></td>
-            <td><%= p.content %></td>
-            <td><%= l p.date_and_time %></td>
+      <% @participant.reserved_events.each do |r| %>
+        <tr>
+          <td><%= attachment_image_tag r, :image , fallback: "no_image.jpeg", size: '40x40'%></td>
+          <td><%= link_to r.event_name, event_path(r) %></td>
+          <td><%= r.content %></td>
+          <td><%= l r.date_and_time %></td>
 
-            <!-- if文がきいていない -->
-            <% if participant_signed_in? && p.participant_id == current_participant.id %>
-              <td><%= link_to "イベントキャンセル",participant_reservation_path(id: current_participant.id), method: :delete, class: "btn btn-danger btn-md", data: {"turbolinks"=>false} %></td>
-            <% end %>
-          </tr>
-        <% end %>
+          <!-- if文がきいていない -->
+          <!-- 
+          reservations = [
+            {participant_id: 1, name: 'name'},
+            {participant_id: 2, name: 'name'},
+          ]
+          reservations,pluck(:participant_id) # => [1,2].include?(1) #=> true
+          -->
+          <% if participant_signed_in? && r.reservations.pluck(:participant_id).include?(current_participant.id) %>
+            <td><%= link_to "イベントキャンセル", participant_reservation_path(id: current_participant.id), method: :delete, class: "btn btn-danger btn-md", data: {"turbolinks"=>false} %></td>
+          <% end %>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div> 
