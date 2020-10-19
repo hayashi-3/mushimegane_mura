@@ -13,23 +13,31 @@
   </head>
 
   <body>
-    <div>
-      <%= notice %>
-      <%= alert %>
-    </div>
     <% if organizer_signed_in? or /\/organizers/ =~ request.fullpath %>
       <main>
         <%= render "shared/header_organizer" %>
+        <div>
+          <%= notice %>
+          <%= alert %>
+        </div>
         <%= yield %>
       </main>
     <% elsif participant_signed_in? && /\/organizers/ !~ request.fullpath %>
       <main>
         <%= render "shared/header_participant" %>
+        <div>
+          <%= notice %>
+          <%= alert %>
+        </div>
         <%= yield %>
       </main>
     <% else %>
       <main>
         <%= render "shared/header_before_participant" %>
+        <div>
+          <%= notice %>
+          <%= alert %>
+        </div>
         <%= yield %>
       </main>
     <% end %>

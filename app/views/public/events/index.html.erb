@@ -1,16 +1,15 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2 mt-4">
-    <div>ようこそ、虫めがね村へ<br>
-      虫めがね村では哲学書や教養書を取り扱った読書会を開催しています。<br>
-      当サイトは会員制で、会員登録後に読書会の予約ができます。<br>
+  <div class="col-md-9 col-md-offset-1 mt-4">
+    <h3 strong>ようこそ、虫めがね村へ</h3 strong>
+    <div>虫めがね村では哲学書や教養書を取り扱った読書会を開催しています。当サイトは会員制で、会員登録後に読書会の予約ができます。<br>
       イベントの様子や主催者については<%= link_to "こちら", root_path, class: "link-about" %>をご覧ください。
     <div>
-    <table class="table mt-4">
+    <table class="table mt-5">
       <% if @events.present? %>
         <thead>
           <tr>
             <th></th>
-            <th>イベント名</th>
+            <th>イベント名(新着順)</th>
             <th>内容</th>
             <th>開催日時</th>
             <th>予約人数/予約上限人数</th>
@@ -40,11 +39,13 @@
         <td>イベントが開催されるまで少々お待ちください</td>
       <% end %>
     </table>
+    <div class="text-center">
+      <%= paginate @events %>
+    </div>
     <span id="back">
       <a href="">
         <img src="assets/up.png" alt="">
       </a>
     </span>
-    <%= paginate @events %>
   </div>
 </div>

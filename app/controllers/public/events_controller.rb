@@ -2,7 +2,7 @@ class Public::EventsController < ApplicationController
   before_action :authenticate_participant!, only: [:show]
 
   def index
-    @events = Event.order("created_at DESC").page(params[:page]).per(5)
+    @events = Event.order("created_at DESC").page(params[:page]).per(15)
   end
 
   def show
