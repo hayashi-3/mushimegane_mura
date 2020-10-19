@@ -1,11 +1,10 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-8">
-    <strong>登録情報</strong><br>
-    <%= link_to "編集する", edit_participant_path(current_participant), method: :get, class: "btn btn-primary" %>
-    <%= link_to "パスワードを変更する", "#", method: :get, class: "btn btn-primary" %>
+<div class="container mt-4">
+  <div class="col-md-8">
+    <h3>登録情報</h3><br>
+    <%= link_to "編集する", edit_participant_path(current_participant), method: :get, class: "btn btn-primary mt-3" %>
+    <%= link_to "パスワードを変更する", edit_participant_registration_path, method: :get, class: "btn btn-primary mt-3" %>
 
-    <table class="table table-bordered">  
+    <table class="table table-bordered mt-5">  
       <tr>
         <th>ニックネーム</th>
         <td><%= @participant.nickname %></td>
@@ -22,8 +21,6 @@
       </tr>
     </table>
 
-      <%= link_to "参加イベント一覧へ", participant_reservations_path(@participant), class: "btn btn-primary" %>
-
-  </div>
+    <%= link_to "参加イベント一覧へ", participant_reservations_path(@participant), class: "btn btn-primary" %>
   </div>
 </div>

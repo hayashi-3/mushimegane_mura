@@ -1,24 +1,29 @@
-<body>
-  <div id="aboutpage-body">
-  <!-- aboutページのみ背景は黒 -->
-
-    <div class="main-vs">
-      <img src="assets/about.png" width="100%" height="700">
+<div id="aboutpage-body">
+  <div class="container-fluid">
+    <div id="welcom">
+      知識をかくだい!　虫めがね村
     </div>
+  </div>
 
-    <div class="container">
-    
-      <div class="col-md-7">
+  <div class="container-fluid">
+    <img class="main-vs-zoom" src="assets/mura.jpeg" width="100%" height="500">
+  </div>
+
+    <div class="row">
+
+      <div class="col-md-6">
         <div class="top">
         </div>
       </div>
 
-      <div class="col-md-5">
-        <ul class="introduce-text">
+      <div class="col-md-6">
 
-          <li id="introduce-text-big">虫めがね村では哲学書をメインとした教養書や古典文学の読書会を開催しています。</li>
+        <ul class="introduce-text">
+          <li id="introduce-text-big">
+            虫めがね村では哲学書をメインとした教養書や古典文学の読書会を開催しています。
+          </li><br>
           
-          <li>哲学書ってどんなの？</li><br>
+          <li class="text-sub">哲学書ってどんなの？</li><br>
           
           <li>大昔の偉人が残してくれた知識</li>
           <li>人生を深く覗き見る機会</li>
@@ -28,24 +33,74 @@
             こっそりひっそり参加してみてください。</li><br>
 
           <span class="c-marker js-markerScrollAnimation">あたらしい世界が開けるかも。</span>
+
+          <li>あなたも、きがるに、てがるに、哲学書を楽しんでみませんか？</li>
+          <li><%= link_to "イベント一覧", events_path %></li>        
         </ul>
       </div>
+    </div>
 
-      <div class="container">
-        <div class="col-md-7">
-          <div class="parson-texit">
-            <li>イベントの主催者</li>
-            <li>虫めがね村　村長</li>
-            <li>大学卒業後、会社に就職する。社会人として生活をする中で、読書に目覚める。</li>
-            <li>問題解決の鍵として哲学書をあげる。</li>
+    <div class="row">
+    <div class="card-deck mx-auto mt-5">    
+        <div class="card" style="width: 30rem;">
+          <img class="card-img-top" src="assets/zoom-img.jpeg" alt="Card image cap" width="100%" height="180">
+          <div class="card-body">
+            <strong class="card-title">ソクラテスの会（オンラインにて）</strong>
+            <p class="card-text">記念すべき第1回目は『ソクラテスの弁明（プラトン著）』を読みました。こんなご時世なのでオンラインにて開催しましたが、みなさん楽しんでもらえたようです。</p>
           </div>
         </div>
-        <div class="col-md-5">
-          <div>
-            <li>あなたも、きがるに、てがるに、哲学書を楽しんでみませんか？</li>
-            <li><%= link_to "イベント一覧", events_path %></li>
+
+        <div class="card" style="width: 30rem;">
+          <img class="card-img-top" src="assets/cafe.jpeg" alt="Card image cap" width="100%" height="180">
+          <div class="card-body">
+            <strong class="card-title" >cafeにて友達の定義を考える会</strong>
+            <p class="card-text">某cafeにてイベントを開催しました。ゆったりとした雰囲気の中で思考の散策を楽しみました。
+              ・・・カフェラテがかわいすぎる・・・！</p>
+          </div>
+        </div>
+ 
+        <div class="card" style="width: 30rem;">
+          <img class="card-img-top" src="assets/meeting.jpeg" alt="Card image cap" width="100%" height="180">
+          <div class="card-body">
+            <strong class="card-title">おすすめ1冊！いつ読むの？今でしょ、レコメンド会</strong>
+            <p class="card-text">人気のレコメンド会です。毎回、参加者のみなさんの熱気を感じます！大好きな1冊について心ゆくままに語り合う会です。</p>
           </div>
         </div>
     </div>
-  </div>
-</body>
+    </div>
+
+    <div class="row mt-5">
+      <div class="col-md-7">
+        <div class="parson-text">
+          <ul>
+            <li class="text-sub">イベントの主催者</li>
+            <li>虫めがね村　村長</li>
+            <li>大学卒業後、会社に就職する。</li>
+            <li>社会人として生活をする中で、読書に目覚める。</li>
+            <li>特に哲学書を読み漁り、生活の知恵を得る。</li>
+            <li>哲学者はソクラテスが好き。</li>
+            <li>本の内容以外のことは忘れっぽく、同じ話題を5回/1日聞くことがありますがdefault設定されているので気にしないでください。</li>
+            <li>虫めがね村の由来は、【虫めがね】知識を拡大したい ＋【村】ほのぼの楽しく交流できるようにとのことからつけました。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-5 mt-4">
+        <div class="parson-img">
+        </div>
+        <div class="text-center">あくび中の村長近影</div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <ul>
+          <li class="text-sub">イベント参加方法</div>
+          <li>①会員登録</li>
+          <li>②好きなイベントを予約（予約人数上限に達した場合、予約できないことがございます）</li>
+          <li>③主催者よりメールにて詳しいイベント情報をお送りします</li>
+          <li>④イベント当日は送信したメールの内容にしたがってご参加ください</li>
+          </ul>
+      </div>
+    </div>
+
+</div>

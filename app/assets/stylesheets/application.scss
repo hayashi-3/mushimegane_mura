@@ -17,30 +17,53 @@
  @import "bootstrap";
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
- @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300&display=swap');
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+
+ header {
+  background-color: rgb(116, 33, 8);
+  height: 70px;
+ }
+
+ .nav-link-logo {
+   height: 50px;
+   width: 200px;
+   margin-top: 10px;
+ }
+
+ .navbar-right {
+   margin-left: 700px;
+   margin-top: 15px;
+ }
+
+ .nav-item :hover{
+   color: white;
+ }
+
+ .nav > li > a:hover, .nav > li > a:focus {
+  text-decoration: none;
+  background-color: rgb(116, 33, 8);
+}
 
  ul {
     list-style: none;
   }
 
-  #navbarNav {
-    background-color: #f3b089;
-  }
-
- .top{
-    height: 70vh;
-    width: 100%;
-    background-image: image-url('girl.jpg');
-    margin-top: 40px;
-    margin-bottom: 40px;
-  }
-
   body {
-    background-color: #f8faf8;
-    font-family: 'M PLUS Rounded 1c', sans-serif;;
+    background-color: #f9faf9;
+    font-family: 'Sawarabi Mincho', sans-serif;
     color: #0b0c0b;
   }
-  .main-vs{
-    background-color: black;
-    color: rgb(248, 241, 241);
-} 
+
+  .nav-link {
+    color: white;
+  }
+
+// トップへ戻るボタン
+#back {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+}
+#back img {
+  width: 50px;
+}

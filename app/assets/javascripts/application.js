@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+// topへ戻るボタン↓
 $(function() {
   $('#back a').on('click',function(event){
     $('body, html'),animate({
@@ -26,18 +27,10 @@ $(function() {
     });
   });
 
-  $(function(){
-    $('img').okzoom({
-      width: 200,
-      height: 200,
-      round: true,
-      background: "#fff",
-      backgroundRepeat: "repeat",
-      shadow: "0 0 5px #000",
-      border: "1px solid black"
-    });
- });
+// aboutページのズーム機能はzoom.jsへ移動→その方が読み込み速い？
+  
 
+// aboutページのマーカー表示
  $(window).scroll(function (){
   $(".js-markerScrollAnimation").each(function(){
     var position = $(this).offset().top; //ページの一番上から要素までの距離を取得

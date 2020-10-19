@@ -1,11 +1,11 @@
 <div class="row">
-  <div class="col-md-8 col-md-offset-2">
+  <div class="col-md-8 col-md-offset-2 mt-4">
     <div>ようこそ、虫めがね村へ<br>
       虫めがね村では哲学書や教養書を取り扱った読書会を開催しています。<br>
       当サイトは会員制で、会員登録後に読書会の予約ができます。<br>
-      イベントの様子や主催者については<%= link_to "こちら", root_path %>をご覧ください。
+      イベントの様子や主催者については<%= link_to "こちら", root_path, class: "link-about" %>をご覧ください。
     <div>
-    <table class="table">
+    <table class="table mt-4">
       <% if @events.present? %>
         <thead>
           <tr>
@@ -19,7 +19,7 @@
         </thead>
         <tbody>
           <% @events.each do |event| %>
-            <tr>
+            <tr>  
               <td><%= attachment_image_tag event, :image , fallback:"no_image.jpeg", size:'100x100'%></td>
               <td><%= link_to event.event_name, event_path(event.id)%></td>
               <td><%= event.content %></td>
@@ -42,8 +42,9 @@
     </table>
     <span id="back">
       <a href="">
-        <i class="fas fa-hand-point-up"></i>
+        <img src="assets/up.png" alt="">
       </a>
     </span>
+    <%= paginate @events %>
   </div>
 </div>
