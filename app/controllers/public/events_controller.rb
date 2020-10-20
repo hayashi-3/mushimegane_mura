@@ -3,6 +3,8 @@ class Public::EventsController < ApplicationController
 
   def index
     @events = Event.order("created_at DESC").page(params[:page]).per(15)
+    held_event_ids = Event.where.not(date_and_time: nil).pluck(:id)
+    @held_events = Event.where(id: held_event_ids).where('date_and_time >= ?', DateTime.current)
   end
 
   def show

@@ -59,11 +59,37 @@
   }
 
 // トップへ戻るボタン
-#back {
+.back {
   position: fixed;
   right: 20px;
   bottom: 20px;
 }
-#back img {
+.back img {
   width: 50px;
+}
+
+//bootstrapボタンの色カスタマイズ
+
+.btn-info {
+  color: #fff;
+  background-color: #50a59e;
+  border-color: #0d3f5c;
+}
+
+.btn-info:hover {
+  color: #fff;
+  background-color:  rgb(64, 150, 172);
+  border-color:  rgb(8, 73, 116);
+}
+
+.btn-danger {
+  color: #fff;
+  background-color: #c21a1a;
+  border-color: #a5131a;
+}
+
+.btn-danger:hover {
+  color: #fff;
+  background-color:  rgb(204, 97, 65);
+  border-color:  rgb(116, 33, 8);
 }

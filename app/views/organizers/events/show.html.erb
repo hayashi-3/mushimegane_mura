@@ -1,36 +1,42 @@
-<div class="container">
-  <table class="table">
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'200x200'%>
+    </div>
+    
+    <div class="col-md-9">
+      <table class="table">
 
-    <thead>
-      <tr>
-        <th>イメージ<th>
-        <th>イベント名</th>
-        <th>イベント内容</th>
-        <th>開催日時</th>
-        <th>参加上限人数</th>
-        <th>予約状況</th>
-      </tr>
-    </thead>
+        <thead>
+          <tr>
+            <th>イベント名</th>
+            <th>イベント内容</th>
+            <th>開催日時</th>
+            <th>参加上限人数</th>
+            <th>予約状況</th>
+            <th>イベント内容最終更新日時</th>
+          </tr>
+        </thead>
 
-    <tbody>
-      <tr>
-        <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
-        
-        <td><%= @event.event_name%></td>
-        <td><%= @event.content %></td>
-        <td><%= l @event.date_and_time %></td>
-        <td>　<%= @event.number_of_reservations %>人</td>
-          <% if @event.is_active == true %>
-            <td>予約受付中</td>
-          <% else %>
-            <td>終了</td>
-          <% end %>
-        
-        <td><%= link_to '編集する', edit_organizers_event_path, class: "btn btn-primary btn-md" %></td>
-        <td><%= link_to '削除する', organizers_event_path, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn btn-danger btn-md" %></td>
-      
-      </tr>
-    </tbody>
+        <tbody>
+          <tr>
+            <td><%= @event.event_name %></td>
+            <td><%= @event.content %></td>
+            <td><%= l @event.date_and_time %></td>
+            <td>　<%= @event.number_of_reservations %>人</td>
+              <% if @event.is_active == true %>
+                <td>予約受付中</td>
+              <% else %>
+                <td>終了</td>
+              <% end %>
+            <td><%= l @event.updated_at %>
+          </tr>
+        </tbody>
 
-  </table>
+      </table>
+    
+        <%= link_to '編集する', edit_organizers_event_path, class: "btn btn-info btn-md" %>
+        <%= link_to '削除する', organizers_event_path, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn btn-danger btn-md" %>
+    </div>
+  </div>
 </div>

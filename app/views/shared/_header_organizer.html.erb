@@ -1,15 +1,15 @@
 <header>
   <ul class="nav justify-content-end">
-    <li class="nav-item">
+    <li class="nav-item mt-4">
       <%= link_to "イベント一覧", organizers_events_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item mt-4">
       <%= link_to "イベント投稿", new_organizers_event_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item mt-4">
       <%= link_to "会員一覧", organizers_participants_path, class: "nav-link" %>
     </li>
-    <li class="nav-item">
+    <li class="nav-item mt-4">
       <%= link_to "ログアウト", destroy_organizer_session_path, method: :delete, class: "nav-link" %>
     </li>
   </ul>

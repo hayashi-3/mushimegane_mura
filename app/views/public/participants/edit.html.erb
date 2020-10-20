@@ -1,28 +1,23 @@
-<div class="container">
-  <div class="row">
+<div class="container mt-4">
+  <div class="ol-md-6 col-md-offset-4 mt-4">
     <%= form_with model: @participant, url: participant_path, local: true do |f| %>
-	  <table>
-        <tbody>
+			
+		<div class="field">
+		  <%= f.label :nickname %><br>
+		  <%= f.text_field :nickname, :size=>"40", autofocus: true %>
+		</div>			
 
-			<tr>
-				<td><%= f.label :nickname, "ニックネーム" %></td>
-				<td><%= f.text_field :nickname, autofocus: true %></td>
-			</tr>
+		<div class="field">
+		  <%= f.label :telephone_number %>(ハイフンなし)<br>
+		  <%= f.text_field :telephone_number, :size=>"40", autofocus: true %>
+		</div>		
 
-			<tr>
-				<td><%= f.label :telephone_number, "電話番号(ハイフンなし)" %></td>
-				<td><%= f.text_field :telephone_number, autofocus: true %></td>
-			</tr>
+		<div class="field">
+		  <%= f.label :email %><br>
+		  <%= f.email_field :email, :size=>"40", autofocus: true %>
+		</div>		
 
-			<tr>
-				<td><%= f.label :email, "メールアドレス" %></td>
-				<td><%= f.email_field :email, autofocus: true %><td>
-			</tr>
-
-		</tbody>
-	  </table>
-
-	  <%= f.submit "会員情報を更新する", class: "btn btn-primary btn-md"%>　<%= link_to "休民する？(退会ページに飛びます)", participants_withdrawal_path(current_participant), class: "btn btn-danger btn-sm" %>
+	  <%= f.submit "会員情報を更新する", class: "btn btn-info btn-md mt-4"%>　<%= link_to "退会ページ", participants_withdrawal_path(current_participant), class: "btn btn-danger btn-sm mt-4" %>
 　  <% end %>
 	</div>
 </div>

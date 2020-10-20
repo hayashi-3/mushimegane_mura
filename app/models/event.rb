@@ -1,4 +1,5 @@
 class Event < ApplicationRecord
+
   has_many :reservations, dependent: :destroy
   has_many :reserving_participants, through: :reservation, source: :participant
   has_many :event_comments, dependent: :destroy
@@ -10,8 +11,6 @@ class Event < ApplicationRecord
   def reserved_by?(participant)
     reservations.where(participant_id: participant.id).exists?
   end
-
-  
 
   validates :date_and_time, :event_name, :content, :number_of_reservations, :is_active, presence: true
 

@@ -1,6 +1,6 @@
 <%= form_with model: @info, url: organizers_participant_infos_path, local: true do |f| %>
 
-  <div class="form-group">
+  <div class="form-group mt-4">
     <%= f.label :email, '返信先メールアドレス' %>
     <%= @participant.email %>
   </div>
@@ -10,6 +10,6 @@
    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
  </div>
 
-  <%= f.submit '送信' %>
+  <%= f.submit '送信', data: { confirm: "この内容で送信しますか？" }, class: "btn btn-info btn-md" %>
 
 <% end %>

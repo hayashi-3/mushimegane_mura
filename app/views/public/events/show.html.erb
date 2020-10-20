@@ -31,7 +31,7 @@
               <% if @event.reserved_by?(current_participant) %>
                 <td>予約済みです。</td>
               <% else %>
-                <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-primary btn-md" %></td>
+                <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-info btn-md" %></td>
               <% end %>
             
             <!--予約ステータス　終了-->
@@ -47,7 +47,7 @@
                   <td><%= e.participant.nickname %></td>
                   <td><%= e.comment %></td>
                   <% if e.participant_id == current_participant.id %>
-                    <td><%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, class: "btn btn-danger btn-md" %></td>
+                    <td><%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, "data-confirm" => "コメント削除しますか？",class: "btn btn-danger btn-md" %></td>
                   <% end %>
               </tr>
             <% end %>
@@ -55,9 +55,9 @@
     </table>
 
     <!-- コメント投稿フォーム -->
-    <%= form_with model:[@event,@event_comment], local: true, data: {"turbolinks"=>false} do |f| %>
-      <%= f.text_area :comment, autofocus: true %>
-      <%= f.submit "送信" %>
+    <%= form_with model:[@event,@event_comment], local: true do |f| %>
+      <%= f.text_area :comment, :size=>"40", autofocus: true %><br>
+      <%= f.submit "送信", class: "btn btn-info btn-xs" %>
     <% end %>
   </div>
 </div>

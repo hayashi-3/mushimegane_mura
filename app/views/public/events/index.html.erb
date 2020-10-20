@@ -25,7 +25,7 @@
               <td><%= l event.date_and_time %></td>
               <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %>人</td>
               <td>
-                <% if event.is_active == true %>
+                <% if event.is_active == true && @held_events %>
                   開催中
                 <% else %>
                   終了
@@ -42,7 +42,7 @@
     <div class="text-center">
       <%= paginate @events %>
     </div>
-    <span id="back">
+    <span class="back">
       <a href="">
         <img src="assets/up.png" alt="">
       </a>

@@ -27,7 +27,7 @@
           reservations,pluck(:participant_id) # => [1,2].include?(1) #=> true
           -->
           <% if participant_signed_in? && r.reservations.pluck(:participant_id).include?(current_participant.id) %>
-            <td><%= link_to "イベントキャンセル", participant_reservation_path(id: current_participant.id), method: :delete, class: "btn btn-danger btn-md", data: {"turbolinks"=>false} %></td>
+            <td><%= link_to "イベントキャンセル", participant_reservation_path(id: current_participant.id), method: :delete, "data-confirm" => "本当にキャンセルしてもよろしいですか？", class: "btn btn-danger btn-md" %></td>
           <% end %>
         </tr>
       <% end %>
