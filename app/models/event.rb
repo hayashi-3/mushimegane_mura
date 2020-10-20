@@ -16,8 +16,8 @@ class Event < ApplicationRecord
 
   validate :date_cannot_be_in_the_past
   def date_cannot_be_in_the_past
-    if date_and_time.present? && date_and_time < Date.today
-      errors.add(:date_and_time, "過去の日付は使用できません")
+    if date_and_time.present? && date_and_time < DateTime.now.to_time
+      errors.add(:date_and_time, "この日付は使用できません")
     end
   end
 
