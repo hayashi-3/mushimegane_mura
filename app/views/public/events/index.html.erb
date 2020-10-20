@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-9 col-md-offset-1 mt-4">
+<div class="container">
+  <div class="col-md-11 mt-4">
     <h3 strong>ようこそ、虫めがね村へ</h3 strong>
     <div>虫めがね村では哲学書や教養書を取り扱った読書会を開催しています。当サイトは会員制で、会員登録後に読書会の予約ができます。<br>
       イベントの様子や主催者については<%= link_to "こちら", root_path, class: "link-about" %>をご覧ください。
@@ -25,7 +25,9 @@
               <td><%= l event.date_and_time %></td>
               <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %>人</td>
               <td>
-                <% if event.is_active == true && @held_events %>
+                <% if event.is_active == true && event.end_of_event %>
+                  まだ終了
+                <% elsif event.is_active %>
                   開催中
                 <% else %>
                   終了

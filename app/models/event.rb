@@ -12,6 +12,11 @@ class Event < ApplicationRecord
     reservations.where(participant_id: participant.id).exists?
   end
 
+  def end_of_event
+    end_of_event_ids = Event.where.not(date_and_time: nil).pluck(:id)
+    @held_events = Event.where(id: end_of_event_ids).where('date_and_time <= ?', DateTime.now.to_time)
+  end
+
   validates :date_and_time, :event_name, :content, :number_of_reservations, :is_active, presence: true
 
   validate :date_cannot_be_in_the_past

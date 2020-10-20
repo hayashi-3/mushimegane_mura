@@ -41,9 +41,6 @@
         <%= yield %>
       </main>
     <% end %>
+    <footer class="fixed-bottom"></footer>
   </body>
-
-  <% if organizer_signed_in? && /\/organizers/ !~ request.fullpath %>
-    <footer class="footer"></footer>
-  <% end %>
 </html>

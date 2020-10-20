@@ -1,63 +1,69 @@
-<div class="row">
-  <div class="col-md-8 col-md-offset-2 mt-4">
-    <table class="table">
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3">
+      <%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'200x200'%>
+    </div>
+    <div class="col-md-9">
+      <table class="table">
 
-      <thead>
-          <tr>
-            <th></th>
-            <th>イベント名</th>
-            <th>イベント内容</th>
-            <th>　開催日時</th>
-            <th>予約上限人数</th>
-            <th>受付状況</th>
-            <th>予約状況</th>
-          </tr>
-      </thead>
+        <thead>
+            <tr>
+              <th></th>
+              <th>イベント名</th>
+              <th>イベント内容</th>
+              <th>　開催日時</th>
+              <th>予約上限人数</th>
+              <th>受付状況</th>
+              <th>予約状況</th>
+            </tr>
+        </thead>
 
-        <tbody>
-          <tr>
-            <td><%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'100x100'%></td>
-            <td><%= @event.event_name%></td>
-            <td><%= @event.content %></td>
-            <td><%= l @event.date_and_time %></td>
-            <td>　　<%= @event.number_of_reservations %>人</td>
-            
-            <!--予約ステータス　受付中-->
-            <% if @event.is_active == true %>
-              <td>予約受付中</td>
-              <td>　<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %></td>
+          <tbody>
+            <tr>
+              <td><%= @event.event_name%></td>
+              <td><%= @event.content %></td>
+              <td><%= l @event.date_and_time %></td>
+              <td>　　<%= @event.number_of_reservations %>人</td>
+              
+              <!--予約ステータス　受付中-->
+              <% if @event.is_active == true %>
+                <td>予約受付中</td>
+                <td>　<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %></td>
 
-              <!--もし予約中の人がいたら予約ボタンを非表示-->
-              <% if @event.reserved_by?(current_participant) %>
-                <td>予約済みです。</td>
+                <!--もし予約中の人がいたら予約ボタンを非表示-->
+                <% if @event.reserved_by?(current_participant) %>
+                  <td>予約済みです。</td>
+                <% else %>
+                  <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-info btn-md" %></td>
+                <% end %>
+              
+              <!--予約ステータス　終了-->
               <% else %>
-                <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-info btn-md" %></td>
+                <td>このイベントは終了しています</td>
+                <td><%= link_to "イベント一覧へ", events_path %></td>
               <% end %>
-            
-            <!--予約ステータス　終了-->
-            <% else %>
-              <td>このイベントは終了しています</td>
-              <td><%= link_to "イベント一覧へ", events_path %></td>
-            <% end %>
-          </tr>
+            </tr>
 
-          <!-- 参加者コメント -->
-          <% @event.event_comments.each do |e| %>
-              <tr>
-                  <td><%= e.participant.nickname %></td>
-                  <td><%= e.comment %></td>
-                  <% if e.participant_id == current_participant.id %>
-                    <td><%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, "data-confirm" => "コメント削除しますか？",class: "btn btn-danger btn-md" %></td>
-                  <% end %>
-              </tr>
-            <% end %>
-        </tbody>
-    </table>
+            <!-- 参加者コメント -->
+            <% @event.event_comments.each do |e| %>
+                <tr>
+                    <td><%= e.participant.nickname %></td>
+                    <td><%= e.comment %></td>
+                    <td>
+                      <% if e.participant_id == current_participant.id %>
+                        <%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, "data-confirm" => "コメント削除しますか？",class: "btn btn-danger btn-md" %>
+                      <% end %>
+                    </td>
+                </tr>
+              <% end %>
+          </tbody>
+      </table>
 
-    <!-- コメント投稿フォーム -->
-    <%= form_with model:[@event,@event_comment], local: true do |f| %>
-      <%= f.text_area :comment, :size=>"40", autofocus: true %><br>
-      <%= f.submit "送信", class: "btn btn-info btn-xs" %>
-    <% end %>
+      <!-- コメント投稿フォーム -->
+      <%= form_with model:[@event,@event_comment], local: true do |f| %>
+        <%= f.text_area :comment, :size=>"40", autofocus: true %><br>
+        <%= f.submit "送信", class: "btn btn-info btn-ms" %>
+      <% end %>
+    </div>
   </div>
 </div>
