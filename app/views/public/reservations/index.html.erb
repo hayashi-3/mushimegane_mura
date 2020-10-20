@@ -17,15 +17,6 @@
           <td><%= link_to r.event_name, event_path(r) %></td>
           <td><%= r.content %></td>
           <td><%= l r.date_and_time %></td>
-
-          <!-- if文がきいていない -->
-          <!-- 
-          reservations = [
-            {participant_id: 1, name: 'name'},
-            {participant_id: 2, name: 'name'},
-          ]
-          reservations,pluck(:participant_id) # => [1,2].include?(1) #=> true
-          -->
           <% if participant_signed_in? && r.reservations.pluck(:participant_id).include?(current_participant.id) %>
             <td><%= link_to "イベントキャンセル", participant_reservation_path(id: current_participant.id), method: :delete, "data-confirm" => "本当にキャンセルしてもよろしいですか？", class: "btn btn-danger btn-md" %></td>
           <% end %>
@@ -33,9 +24,4 @@
       <% end %>
     </tbody>
   </table>
-  <span id="back">
-    <a href="">
-      <img src="assets/up.png" alt="">
-    </a>
-  </span>
 </div> 

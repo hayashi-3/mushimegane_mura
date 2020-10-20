@@ -9,7 +9,7 @@ class Public::EventCommentsController < ApplicationController
 	  if @event_comment.save
 	    redirect_back(fallback_location: root_path)
 	  else
-	    redirect_back(fallback_location: event_path(@event))
+		redirect_back(fallback_location: event_path(@event))
 	  end
 	end
 

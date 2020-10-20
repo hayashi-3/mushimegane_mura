@@ -28,6 +28,7 @@
               <!--予約ステータス　受付中-->
               <% if @event.is_active == true %>
                 <td>予約受付中</td>
+              <!--else予約受付は終了しましたって書いた方がいいかも-->
                 <td>　<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %></td>
 
                 <!--もし予約中の人がいたら予約ボタンを非表示-->
@@ -39,7 +40,7 @@
               
               <!--予約ステータス　終了-->
               <% else %>
-                <td>このイベントは終了しています</td>
+                <td>このイベントの受付は終了しています</td>
                 <td><%= link_to "イベント一覧へ", events_path %></td>
               <% end %>
             </tr>
