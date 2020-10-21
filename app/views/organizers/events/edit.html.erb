@@ -2,6 +2,7 @@
   <div class="col-md-5 col-md-offset-4">
     <h3>イベント情報編集</h3>
 	<%= form_with model: @event, url: organizers_event_path(@event.id), local: true do |f| %>
+	  <%= render 'layouts/error_messages', model: f.object %>
 
 		<!-- イベント画像 -->
 		<div class="form-group">

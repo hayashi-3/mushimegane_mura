@@ -1,69 +1,63 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-md-3">
-      <%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'200x200'%>
+    <div class="col-md-4">
+      <%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'300x300'%>
     </div>
-    <div class="col-md-9">
-      <table class="table">
+    <div class="col-md-8">
+    <h3>イベント詳細</h3>
+      <div class="show-text">
+        <p>イベント名：<%= @event.event_name%></p>
+        <p>イベント内容：<%= @event.content %></p>
+        <p>開催日時：<%= l @event.date_and_time %></p>
+        <p>予約上限人数：<%= @event.number_of_reservations %>人</p>
+              
+        <!--予約ステータス　受付中-->
+        <% if !(@event.is_active == false) && @event.date_and_time >= DateTime.now %>
+          <p>予約状況：予約受付中</p>
+        <!--else予約受付は終了しましたって書いた方がいいかも-->
+          <p>予約人数/予約上限人数：<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %>人</p>
 
+          <!--もし予約中の人がいたら予約ボタンを非表示-->
+          <% if @event.reserved_by?(current_participant) %>
+            <p>予約状況：予約済みです。</p>
+          <% else %>
+            <%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-info btn-md mt-3" %>
+          <% end %>
+        
+        <!--予約ステータス　終了-->
+        <% else %>
+          <p>予約状況：受付は終了しています</p>
+        <% end %>
+      </div>
+
+      <!-- 参加者コメント -->
+      <table class="table mt-5">
         <thead>
+          <tr>
+            <th>投稿者</th>
+            <th>コメント</th>
+          </tr>
+        <tbody>
+          <% @event.event_comments.each do |e| %>
             <tr>
-              <th>イベント名</th>
-              <th>イベント内容</th>
-              <th>　開催日時</th>
-              <th>予約上限人数</th>
-              <th>受付状況</th>
-              <th>予約状況</th>
+                <td><%= e.participant.nickname %></td>
+                <td><%= e.comment %></td>
+                <td>
+                  <% if e.participant_id == current_participant.id %>
+                    <%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, "data-confirm" => "コメント削除しますか？",class: "btn btn-danger btn-md" %>
+                  <% end %>
+                </td>
             </tr>
-        </thead>
-
-          <tbody>
-            <tr>
-              <td><%= @event.event_name%></td>
-              <td><%= @event.content %></td>
-              <td><%= l @event.date_and_time %></td>
-              <td>　　<%= @event.number_of_reservations %>人</td>
-              
-              <!--予約ステータス　受付中-->
-              <% if @event.is_active == true %>
-                <td>予約受付中</td>
-              <!--else予約受付は終了しましたって書いた方がいいかも-->
-                <td>　<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %></td>
-
-                <!--もし予約中の人がいたら予約ボタンを非表示-->
-                <% if @event.reserved_by?(current_participant) %>
-                  <td>予約済みです。</td>
-                <% else %>
-                  <td><%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-info btn-md" %></td>
-                <% end %>
-              
-              <!--予約ステータス　終了-->
-              <% else %>
-                <td>受付は終了しています</td>
-                <td><%= link_to "イベント一覧へ", events_path %></td>
-              <% end %>
-            </tr>
-
-            <!-- 参加者コメント -->
-            <% @event.event_comments.each do |e| %>
-                <tr>
-                    <td><%= e.participant.nickname %></td>
-                    <td><%= e.comment %></td>
-                    <td>
-                      <% if e.participant_id == current_participant.id %>
-                        <%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, "data-confirm" => "コメント削除しますか？",class: "btn btn-danger btn-md" %>
-                      <% end %>
-                    </td>
-                </tr>
-              <% end %>
-          </tbody>
+          <% end %>
+        </tbody>
       </table>
 
       <!-- コメント投稿フォーム -->
       <%= form_with model:[@event,@event_comment], local: true do |f| %>
         <%= f.text_area :comment, :size=>"40", autofocus: true %><br>
-        <%= f.submit "送信", class: "btn btn-info btn-ms" %>
+        <%= f.submit "送信", class: "btn btn-info btn-ms mb-3" %>
       <% end %>
+      <%= link_to "イベント一覧へ", events_path %>
     </div>
   </div>
 </div>

@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 2020_10_10_050207) do
     t.datetime "date_and_time", null: false
     t.string "event_name", null: false
     t.text "content", null: false
-    t.integer "number_of_reservations", default: 0, null: false
+    t.integer "number_of_reservations", null: false
     t.string "image_id"
     t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
