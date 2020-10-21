@@ -22,7 +22,6 @@ class Public::ReservationsController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @reservation = current_participant.reservations.new(reservation_params)
-    @reservation.event_id = @event.id
     if @reservation.save
       redirect_to thanks_path
     else
@@ -32,7 +31,7 @@ class Public::ReservationsController < ApplicationController
   end
 
   def destroy
-    @participant = Participant.find_by(params[:participant_id])
+    @participant = Participant.find_by(id: current_participant.id)
     @reservation = current_participant.reservations.find_by(params[:participant_id])
     @reservation.destroy
     redirect_back(fallback_location: root_path)

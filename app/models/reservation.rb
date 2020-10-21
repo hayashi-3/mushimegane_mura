@@ -10,11 +10,6 @@ class Reservation < ApplicationRecord
     キャンセル: 2
   }
 
-  validate :max_reserve_restrictions
-  def max_reserve_restrictions
-    if event.number_of_reservations < participant_id
-      errors.add(:base, ": 申し訳ございません、予約がいっぱいです。")
-    end
-  end
+  
 
 end

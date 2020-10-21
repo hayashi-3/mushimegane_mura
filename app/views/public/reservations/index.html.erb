@@ -7,7 +7,8 @@
       <th>イベント名</th>
       <th>イベント内容</th>
       <th>開催日時</th>
-      <th colspan="3"></th>
+      <th>予約受付状況</th>
+      <th></th>
       </tr>
     </thead>
     <tbody>
@@ -17,8 +18,13 @@
           <td><%= link_to r.event_name, event_path(r) %></td>
           <td><%= r.content %></td>
           <td><%= l r.date_and_time %></td>
-          <% if participant_signed_in? && r.reservations.pluck(:participant_id).include?(current_participant.id) %>
-            <td><%= link_to "イベントキャンセル", participant_reservation_path(r,current_participant.id), method: :delete, "data-confirm" => "本当にキャンセルしてもよろしいですか？", class: "btn btn-danger btn-md" %></td>
+          <% if !(r.is_active == false) && r.date_and_time >= DateTime.now %>
+            <td>予約受付中</td>
+            <% if participant_signed_in? && r.reservations.pluck(:participant_id).include?(current_participant.id) %>
+              <td><%= link_to "イベントキャンセル", participant_reservation_path(id: current_participant.id), method: :delete, "data-confirm" => "本当にキャンセルしてもよろしいですか？", class: "btn btn-danger btn-md" %></td>
+            <% end %>
+          <% else %>
+            <td>予約受付終了</td>
           <% end %>
         </tr>
       <% end %>
