@@ -1,3 +1,106 @@
 // Place all the styles related to the public/homes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
+
+li {
+  list-style: none;
+}
+
+#aboutpage-body {
+  background-color: rgb(201, 176, 158);
+}
+
+#welcom {
+	font-size: 50px;
+	font-family: 'M PLUS Rounded 1c', sans-serif;
+	color: rgb(224, 112, 7);
+	font-weight:bold;
+	text-align: center;
+	position: relative;
+	padding: 1.5rem 1rem;
+  }
+  
+  #welcom:after {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 10px;
+	content: '';
+	background-image: -webkit-repeating-linear-gradient(135deg,  rgb(224, 112, 7),  rgb(224, 112, 7) 1px, transparent 2px, transparent 5px);
+	background-image: repeating-linear-gradient(-45deg, rgb(224, 112, 7),  rgb(150, 40, 7) 1px, transparent 2px, transparent 5px);
+	background-size: 7px 7px;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+  }
+
+.top{
+  height: 70vh;
+  width: 70%;
+  background-image: image-url('girl.jpg');
+  box-shadow: 50px -30px 2px 0px rgb(116, 33, 8);
+  margin: 70px 0px 10px 70px;
+}
+
+#introduce-text-big {
+    color: rgb(250, 250, 250);
+    font-size: 30px;
+    margin-top: 40px;
+}
+
+.text-sub {
+  color: rgb(116, 33, 8);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.introduce-text {
+	color: rgb(250, 250, 250);
+	font-size: 20px;
+	margin-right: 50px;
+  }
+
+.c-marker {
+    background: -webkit-linear-gradient(left, rgb(116, 33, 8) 50%, transparent 50%);
+    background: -moz-linear-gradient(left, rgb(116, 33, 8) 50%, transparent 50%);
+    background: linear-gradient(left, rgb(116, 33, 8) 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-size: 200% .8em; 
+    background-position: 100% .5em;
+    transition: 2s;
+    font-size: 20px;
+}
+.c-marker.is-active{
+    background-position: 0% .5em;
+}
+
+#parson {
+  background-color: rgb(243, 211, 184);
+}
+
+.parson-text {
+  font-size: 20px;
+  color: white;
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.parson-img {
+  background-image: image-url('dog.jpg');
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: cover;
+  margin-left: 30px;
+}
+
+#way_to_participate {
+  width: 100%;
+  height: 400px;
+  font-size: 20px;
+  background-color: rgb(229, 223, 192);
+  padding: 30px;
+}

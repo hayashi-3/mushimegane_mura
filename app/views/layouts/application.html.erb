@@ -13,7 +13,7 @@
   </head>
 
   <body>
-    <% if organizer_signed_in? or /\/organizers/ =~ request.fullpath %>
+    <% if organizer_signed_in? %>
       <main>
         <div>
           <%= notice %>
@@ -22,7 +22,16 @@
         <%= render "shared/header_organizer" %>
         <%= yield %>
       </main>
-    <% elsif participant_signed_in? && /\/organizers/ !~ request.fullpath %>
+    <% elsif /\/organizers/ =~ request.fullpath %>
+      <main>
+        <div>
+          <%= notice %>
+          <%= alert %>
+        </div>
+        <%= render "shared/header_before_organizer" %>
+        <%= yield %>
+      </main>
+    <% elsif participant_signed_in? %>
       <main>
         <div>
           <%= notice %>

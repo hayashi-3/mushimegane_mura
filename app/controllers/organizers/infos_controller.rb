@@ -13,7 +13,7 @@ class Organizers::InfosController < ApplicationController
     @info = Info.new(info_params)
     @participant = Participant.find(params[:participant_id])
     @info.participant_id = @participant.id
-    if @info.save!
+    if @info.save
       InfoMailer.info_mail(@info, @participant).deliver_now
       flash[:success] = 'メールを受付ました'
       redirect_to organizers_participant_infos_path

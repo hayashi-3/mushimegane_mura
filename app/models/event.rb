@@ -12,7 +12,8 @@ class Event < ApplicationRecord
     reservations.where(participant_id: participant.id).exists?
   end
 
-  validates :date_and_time, :event_name, :content, :number_of_reservations, :is_active, presence: true
+  validates :date_and_time, :event_name, :content, :number_of_reservations, presence: true
+  validates :is_active, inclusion: {in: [true, false]}
 
   validate :date_cannot_be_in_the_past
   def date_cannot_be_in_the_past

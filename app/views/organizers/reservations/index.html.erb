@@ -6,16 +6,21 @@
           <th>参加者氏名</th>
           <th>メールアドレス</th>
           <th>参加ステータス</th>
-          <th colspan="3"></th>
+          <th>会員ステータス</th>
         </tr>
     </thead>
     <tbody>
-      <% @event.reservations.each do |e| %>
+      <% @event.reservations.each do |r| %>
         <tr>
-          <td><%=e.participant.nickname %></td>
-          <td><%= e.participant.email %></td>
-          <td><%= e.attendance_status %></td>
-          <td><%= link_to "メールする", new_organizers_participant_info_path(e.participant.id) %></td>
+          <td><%= r.participant.nickname %></td>
+          <td><%= r.participant.email %></td>
+          <td><%= r.attendance_status %></td>
+          <% if r.participant.is_deleted == true %>
+            <td>在籍中</td>
+          <% else %>
+            <td>退会済み</td>
+          <% end %>
+          <td><%= link_to "メールする", new_organizers_participant_info_path(r.participant.id) %></td>
         </tr>
       <% end %>
     </tbody>

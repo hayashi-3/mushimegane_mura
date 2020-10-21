@@ -7,9 +7,9 @@
           <th>イベント画像</th>
           <th>イベント名</th>
           <th>内容</th>
-          <th>　日時</th>
+          <th>日時</th>
           <th>参加可能人数</th>
-          <th>予約状況</th>
+          <th>予約ステータス</th>
           <th>予約人数/予約上限</th>
         </tr>
       </thead>
@@ -22,15 +22,9 @@
             <td><%= event.content %></td>
             <td><%= l event.date_and_time %></td>
             <td>　　<%= event.number_of_reservations %>人</td>
-            <td>
-              <% if event.is_active == true %>
-                予約受付中
-                <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %></td>
-                <td><%= link_to "予約者一覧",organizers_event_reservations_path(event,@reservation)%></td>
-              <% else %>
-                終了
-              <% end %>
-            </td>
+            <td><%= event.is_active == true ? "予約受付中" : "予約終了" %></td>
+            <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %></td>
+            <td><%= link_to "予約者一覧",organizers_event_reservations_path(event,@reservation)%></td>
           </tr>
         <% end %>
       <tbody>
