@@ -20,7 +20,7 @@ class Public::ParticipantsController < ApplicationController
   def update
     @participant = Participant.find(params[:id])
   if @participant.update(participant_params)
-    redirect_to participant_path(participant_params)
+    redirect_to participant_path(participant_params), notice: "更新しました"
   else
     redirect_to "edit"
   end

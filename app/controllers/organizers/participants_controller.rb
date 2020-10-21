@@ -16,7 +16,7 @@ class Organizers::ParticipantsController < ApplicationController
   def update
     @participant = Participant.find(params[:id])
   if@participant.update(participant_params)
-    redirect_to organizers_participant_path(@participant.id)
+    redirect_to organizers_participant_path(@participant.id), notice: "会員情報の更新ができました"
   else
     redirect_back(fallback_location: root_path)  
   end

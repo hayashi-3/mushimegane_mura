@@ -11,10 +11,9 @@
         <p>開催日時：<%= l @event.date_and_time %></p>
         <p>予約上限人数：<%= @event.number_of_reservations %>人</p>
               
-        <!--予約ステータス　受付中-->
+        <!--**予約ステータス　受付中　現在時刻より後に開催されるイベントを取得　ここから-->
         <% if !(@event.is_active == false) && @event.date_and_time >= DateTime.now %>
           <p>予約状況：予約受付中</p>
-        <!--else予約受付は終了しましたって書いた方がいいかも-->
           <p>予約人数/予約上限人数：<%= "#{@event.reservations.count} " %>/<%= @event.number_of_reservations %>人</p>
 
           <!--もし予約中の人がいたら予約ボタンを非表示-->
@@ -24,7 +23,8 @@
             <%= link_to "参加する！", new_event_reservation_path(@event), class: "btn btn-info btn-md mt-3" %>
           <% end %>
         
-        <!--予約ステータス　終了-->
+        <!--**ここまで-->
+        <!--終了したイベント、管理側で終了ステータスにしたものを表示-->
         <% else %>
           <p>予約状況：受付は終了しています</p>
         <% end %>

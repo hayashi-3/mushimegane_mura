@@ -7,9 +7,6 @@ class Reservation < ApplicationRecord
   enum attendance_status: {
     未参加: 0,
     参加: 1,
-    キャンセル: 2
   }
-
-  
 
 end
