@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   }
 
   namespace :organizers do
+    root 'homes#top'
     resources :participants do
       resources :infos, only: [:index, :new, :create]
     end

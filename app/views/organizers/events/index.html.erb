@@ -22,7 +22,11 @@
             <td><%= event.content %></td>
             <td><%= l event.date_and_time %></td>
             <td>　　<%= event.number_of_reservations %>人</td>
-            <td><%= event.is_active == true ? "予約受付中" : "予約終了" %></td>
+            <% if !(event.is_active == false) && event.date_and_time >= DateTime.now %>
+              <td>　予約受付中</td>
+            <% else %>
+              <td>　予約終了</td>
+            <% end %>
             <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %></td>
             <td><%= link_to "予約者一覧",organizers_event_reservations_path(event,@reservation)%></td>
           </tr>

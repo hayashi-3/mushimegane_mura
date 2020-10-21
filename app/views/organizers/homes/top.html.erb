@@ -1,15 +1,12 @@
 <div class="container">
   <div class="col-md-11 mt-4">
-    <h3 strong>ようこそ、虫めがね村へ</h3 strong>
-    <div>虫めがね村では哲学書や教養書を取り扱った読書会を開催しています。当サイトは会員制で、会員登録後に読書会の予約ができます。<br>
-      イベントの様子や主催者については<%= link_to "こちら", root_path, class: "link-about" %>をご覧ください。
-    <div>
+  <h4>開催前のイベント一覧</h4>
     <table class="table mt-5">
       <% if @events.present? %>
         <thead>
           <tr>
             <th></th>
-            <th>イベント名(新着順)</th>
+            <th>イベント名</th>
             <th>内容</th>
             <th>開催日時</th>
             <th>予約人数/予約上限人数</th>
@@ -25,10 +22,10 @@
               <td><%= l event.date_and_time %></td>
               <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %>人</td>
               <td>
-                <% if !(event.is_active == false) && event.date_and_time >= DateTime.now %>
+                <% if !(event.is_active == false) %>
                   予約受付中
                 <% else %>
-                  予約受付終了
+                  予約終了
                 <% end %>
               </td>
             </tr>
@@ -36,7 +33,7 @@
         <tbody>
       </table>
       <% else %>
-        <td>イベントが開催されるまで少々お待ちください</td>
+        <td>未開催のイベントはありません</td>
       <% end %>
     </table>
     <div class="text-center">
