@@ -2,7 +2,7 @@ class Organizers::EventsController < ApplicationController
   before_action :authenticate_organizer!
 
   def index
-    @events = Event.order("created_at DESC").page(params[:page]).per(5)
+    @events = Event.order("created_at DESC").page(params[:page]).per(10)
   end
 
   def show

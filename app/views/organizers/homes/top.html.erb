@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-11 mt-4">
-  <h4>開催前のイベント一覧</h4>
+  <h4>開催前のイベント一覧(直近のものから)</h4>
     <table class="table mt-5">
       <% if @events.present? %>
         <thead>
@@ -23,9 +23,9 @@
               <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %>人</td>
               <td>
                 <% if !(event.is_active == false) %>
-                  予約受付中
+                  開催前
                 <% else %>
-                  予約終了
+                  開催終了
                 <% end %>
               </td>
             </tr>

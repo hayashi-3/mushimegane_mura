@@ -15,9 +15,9 @@ class Organizers::InfosController < ApplicationController
     @info.participant_id = @participant.id
     if @info.save
       InfoMailer.info_mail(@info, @participant).deliver_now
-      flash[:success] = 'メールを受付ました'
       redirect_to organizers_participant_infos_path
     else
+      flash.now[:notice] = '入力に誤りがあります'
       render :new
     end
   end

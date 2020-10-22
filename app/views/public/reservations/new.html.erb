@@ -14,8 +14,10 @@
         </tr>
         <tr>
           <th>開催状況:</th>
-          <% if @event.is_active == true %>
-            <td>開催中</td>
+          <% if !(@event.is_active == false) && @event.date_and_time >= DateTime.now %>
+            <td>開催前</td>
+          <% else %>
+            <td>開催終了</td>
           <% end %>
         </tr>
       </table>
@@ -23,7 +25,11 @@
         <%= f.hidden_field :event_id, value: @event.id %>
         <%= f.hidden_field :attendance_status, {value: '参加'} %>
         
-        <%= f.submit '上記の内容で予約する',"data-confirm" => "予約を確定してよろしいですか？", class:"btn btn-info btn-md" %>
+        <% if @reservation_flag == true %>
+          <%= f.submit '上記の内容で予約する',"data-confirm" => "予約を確定してよろしいですか？", class:"btn btn-info btn-md" %>
+        <% else %>
+          <p>※申し訳ございません。このイベントは予約満席です</p>
+        <% end %>
     <% end %>
   </div>
 </div>

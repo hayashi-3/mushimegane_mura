@@ -12,7 +12,7 @@
           <th>内容</th>
           <th>開催日時</th>
           <th>予約人数/予約上限人数</th>
-          <th>予約受付状況</th>
+          <th>開催状況</th>
         </tr>
       </thead>
       <tbody>
@@ -25,9 +25,9 @@
             <td>　　　<%= "#{event.reservations.count} " %>/<%= event.number_of_reservations %>人</td>
             <td>
               <% if !(event.is_active == false) && event.date_and_time >= DateTime.now %>
-                予約受付中
+                開催前
               <% else %>
-                予約受付終了
+                開催終了
               <% end %>
             </td>
           </tr>

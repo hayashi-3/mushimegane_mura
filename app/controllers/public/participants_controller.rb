@@ -4,9 +4,9 @@ class Public::ParticipantsController < ApplicationController
 
   def correct_participant
     participant = Participant.find(params[:id])
-      if current_participant != participant
-        redirect_to participant_path(current_participant)
-      end
+    if current_participant != participant
+      redirect_to participant_path(current_participant)
+    end
   end
 
   def show
@@ -19,11 +19,11 @@ class Public::ParticipantsController < ApplicationController
 
   def update
     @participant = Participant.find(params[:id])
-  if @participant.update(participant_params)
-    redirect_to participant_path(participant_params), notice: "更新しました"
-  else
-    redirect_to "edit"
-  end
+    if @participant.update(participant_params)
+      redirect_to participant_path(participant_params), notice: "更新しました"
+    else
+      render :edit
+    end
   end
 
   def withdrawal
@@ -33,11 +33,12 @@ class Public::ParticipantsController < ApplicationController
     @participant = Participant.find(current_participant.id)
     @participant.update(is_deleted: true)
     reset_session
-    redirect_to root_path
+    redirect_to root_path, notice: "ご利用ありがとうございました"
   end
 
   private 
   def participant_params
     params.require(:participant).permit(:nickname, :email, :telephone_number, :is_deleted)
   end
+
 end

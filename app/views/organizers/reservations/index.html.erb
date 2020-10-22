@@ -1,12 +1,11 @@
 <div class="container">
-  <h2>予約者一覧</h2>
+  <h3>イベント予約者一覧</h3>
   <table class="table">
     <thead>
         <tr>
           <th>参加者氏名</th>
           <th>メールアドレス</th>
           <th>参加ステータス</th>
-          <th>会員ステータス</th>
         </tr>
     </thead>
     <tbody>
@@ -15,11 +14,6 @@
           <td><%= r.participant.nickname %></td>
           <td><%= r.participant.email %></td>
           <td><%= r.attendance_status %></td>
-          <% if r.participant.is_deleted == true %>
-            <td>在籍中</td>
-          <% else %>
-            <td>退会済み</td>
-          <% end %>
           <td><%= link_to "メールする", new_organizers_participant_info_path(r.participant.id) %></td>
         </tr>
       <% end %>
