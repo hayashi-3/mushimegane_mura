@@ -39,7 +39,7 @@ class Public::ReservationsController < ApplicationController
       @reservation = Reservation.new
     end
   else
-    redirect_to see_you_path
+    redirect_to owabi_path
   end
   end
 
