@@ -18,7 +18,8 @@ class Organizers::ParticipantsController < ApplicationController
   if@participant.update(participant_params)
     redirect_to organizers_participant_path(@participant.id), notice: "会員情報の更新ができました"
   else
-    redirect_back(fallback_location: root_path)  
+    flash.now[:notice] = "会員情報が保存できませんでした"
+    render :edit
   end
   end
 

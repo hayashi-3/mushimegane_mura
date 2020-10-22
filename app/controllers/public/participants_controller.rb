@@ -1,6 +1,7 @@
 class Public::ParticipantsController < ApplicationController
   before_action :authenticate_participant!
   before_action :correct_participant
+  before_action :reservations_attendance_status_false, only: [:unsubscribe]
 
   def correct_participant
     participant = Participant.find(params[:id])
@@ -35,6 +36,14 @@ class Public::ParticipantsController < ApplicationController
     reset_session
     redirect_to root_path, notice: "ご利用ありがとうございました"
   end
+
+  def reservations_attendance_status_false
+    # 退会した会員のattendance_statusが１（参加）のものを探す
+    invalid_reservation = Reservation.where(event_id: @event.id).where(attendance_status: 1)
+    # もし会員の退会フラグが有効なら
+    # attendance_statusを0（未参加）にして予約を解消する
+  end
+
 
   private 
   def participant_params

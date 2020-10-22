@@ -2,3 +2,12 @@ ja:
   time:
     formats:
       default: "%Y/%m/%d %H:%M"
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        date_and_time: 開催日時
+        event_name: イベント名
+        content: 内容
+        number_of_reservations: 予約上限人数

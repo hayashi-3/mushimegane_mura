@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     
     get '/participants/:id/withdrawal' => 'participants#withdrawal', as: 'participants_withdrawal'
     put '/participants/:id/unsubscribe' => 'participants#unsubscribe', as: 'participants_unsubscribe'
-    get '/see_you' => 'homes#see_you'
+    get '/owabi' => 'homes#owabi'
     get '/thanks' => 'homes#thanks'
   end
 
