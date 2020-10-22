@@ -31,19 +31,18 @@ class Public::ParticipantsController < ApplicationController
   end
 
   def unsubscribe
-    @participant = Participant.find(current_participant.id)
     @participant.update(is_deleted: true)
+    if @invalid_reservation.size >= 1
+      @invalid_reservation.update_all(attendance_status: 0)
+    end
     reset_session
     redirect_to root_path, notice: "ご利用ありがとうございました"
   end
 
   def reservations_attendance_status_false
-    # 退会した会員のattendance_statusが１（参加）のものを探す
-    invalid_reservation = Reservation.where(event_id: @event.id).where(attendance_status: 1)
-    # もし会員の退会フラグが有効なら
-    # attendance_statusを0（未参加）にして予約を解消する
+    @participant = Participant.find(current_participant.id)
+    @invalid_reservation = Reservation.where(event_id: @participant.reserved_events.ids).where(attendance_status: 1)
   end
-
 
   private 
   def participant_params

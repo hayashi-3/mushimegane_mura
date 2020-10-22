@@ -23,7 +23,7 @@
       </table>
 
         <%= f.hidden_field :event_id, value: @event.id %>
-        <%= f.hidden_field :attendance_status, {value: '参加'} %>
+        <%= f.hidden_field :attendance_status, {value: 'reserve'} %>
         
         <% if @reservation_flag == true %>
           <%= f.submit '上記の内容で予約する',"data-confirm" => "予約を確定してよろしいですか？", class:"btn btn-info btn-md" %>

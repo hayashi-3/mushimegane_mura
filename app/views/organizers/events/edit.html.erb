@@ -2,7 +2,6 @@
   <div class="col-md-5 col-md-offset-4">
     <h3>イベント情報編集</h3>
 	<%= form_with model: @event, url: organizers_event_path(@event.id), local: true do |f| %>
-	  <%= render 'layouts/error_messages', model: f.object %>
 
 		<!-- イベント画像 -->
 		<div class="form-group">
@@ -30,7 +29,7 @@
 
 　　　　　　　<!-- 参加人数  -->
 		<div class="form-group">
-			<%= f.label :number_of_reservations, "参加上限人数"%><br>
+			<%= f.label :number_of_reservations, "参加上限人数(半角で入力してください)"%><br>
 			<%= f.text_field :number_of_reservations, autofocus: true %>
 		</div>
 

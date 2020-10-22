@@ -12,7 +12,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @participant.reserved_events.each do |r| %>
+      <% @reservations.each do |r| %>
         <tr>
           <td><%= attachment_image_tag r, :image , fallback: "no_image.jpeg", size: '40x40'%></td>
           <td><%= link_to r.event_name, event_path(r) %></td>

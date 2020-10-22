@@ -5,8 +5,8 @@ class Reservation < ApplicationRecord
   validates :event_id, uniqueness: { scope: :participant_id }
 
   enum attendance_status: {
-    未参加: 0,
-    参加: 1,
+    not_resarve: 0,
+    reserve: 1,
   }
 
 end

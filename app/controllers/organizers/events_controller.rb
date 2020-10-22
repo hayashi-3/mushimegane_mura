@@ -18,7 +18,7 @@ class Organizers::EventsController < ApplicationController
   if @event.save
     redirect_to organizers_event_path(@event.id), notice: "イベントを登録しました"
   else
-    render "new"
+    render :new
   end
   end
 
@@ -30,8 +30,9 @@ class Organizers::EventsController < ApplicationController
   def update
     @event = Event.find(params[:id])
   if@event.update(event_params)
-    redirect_to organizers_event_path(@event.id), notice: "イベントの更新ができました"
+    redirect_to organizers_event_path(@event.id)
   else
+    flash[:notice] = "イベントの更新ができませんでした"
     redirect_back(fallback_location: root_path)
   end
   end

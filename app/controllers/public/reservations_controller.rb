@@ -11,7 +11,7 @@ class Public::ReservationsController < ApplicationController
 
   def index
     @participant = Participant.find(current_participant.id)
-    @reservations = @participant.reserved_events.all
+    @reservations = @participant.reserved_events.where("reservations.attendance_status",1)
   end
 
   def new
