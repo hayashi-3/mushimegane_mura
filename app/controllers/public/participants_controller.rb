@@ -1,7 +1,6 @@
 class Public::ParticipantsController < ApplicationController
   before_action :authenticate_participant!
   before_action :correct_participant
-  before_action :reservations_attendance_status_false, only: [:unsubscribe]
 
   def correct_participant
     participant = Participant.find(params[:id])
@@ -31,17 +30,10 @@ class Public::ParticipantsController < ApplicationController
   end
 
   def unsubscribe
+    @participant = Participant.find(current_participant.id)
     @participant.update(is_deleted: true)
-    if @invalid_reservation.size >= 1
-      @invalid_reservation.update_all(attendance_status: 0)
-    end
     reset_session
     redirect_to root_path, notice: "ご利用ありがとうございました"
-  end
-
-  def reservations_attendance_status_false
-    @participant = Participant.find(current_participant.id)
-    @invalid_reservation = Reservation.where(event_id: @participant.reserved_events.ids).where(attendance_status: 1)
   end
 
   private 

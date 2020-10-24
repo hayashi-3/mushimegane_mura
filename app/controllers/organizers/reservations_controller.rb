@@ -7,6 +7,14 @@ class Organizers::ReservationsController < ApplicationController
     @participant = Participant.find_by(params[:participant_id])
   end
 
+  def destroy
+    @event = Event.where(id: params[:event_id]).where(participant_id: params[:participant_id])
+    @participant = Participant.find_by(id: params[:id])
+    @reservation = @participant.reservations.find_by(event_id: params[:event_id])
+    @reservation.destroy
+    redirect_to organizers_event_reservations_path, notice: "予約を削除しました"
+  end
+
   private
 
   def reservation_params

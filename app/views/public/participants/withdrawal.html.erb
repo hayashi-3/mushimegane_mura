@@ -1,9 +1,8 @@
 <div class="container">
   <div class="col-md-7 col-md-offset-3 mt-4">
 	<h3>本当に退会しますか？</h3>
-	<h3>退会すると、会員登録情報や<br>
-		イベントの予約ができなくなります。</h3>
-	<h3>※万が一、予約しているイベントを消化していなくても退会されると参加できませんのでご了承ください。</h3>
+	<h3>※万が一、予約しているイベントがある場合は、予約はキャンセルされません。</h3>
+	<h3>キャンセルされる場合は予約詳細ページでキャンセルをお願いします。</h3>
 	<h3>上記の内容を確認した上で問題がない場合は、「退会する」をクリックしてください。</h3>
 	<%= link_to "退会しない", participant_path, method: :get, class: "btn btn-info" %>
 	<%= link_to "退会する", participants_unsubscribe_path, method: :put, "data-confirm" => "退会処理に進みますか？", class: "btn btn-danger" %>

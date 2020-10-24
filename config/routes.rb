@@ -10,11 +10,11 @@ Rails.application.routes.draw do
 
   namespace :organizers do
     root 'homes#top'
-    resources :participants do
+    resources :participants, only: [:index, :show, :edit, :update] do
       resources :infos, only: [:index, :new, :create]
     end
     resources :events do
-      resources :reservations, only: [:index]
+      resources :reservations, only: [:index, :destroy]
     end
   end
 

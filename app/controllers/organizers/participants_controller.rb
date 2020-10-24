@@ -22,6 +22,12 @@ class Organizers::ParticipantsController < ApplicationController
   end
   end
 
+  def destroy
+    @participant = Participant.find(params[:id])
+    @participant.destroy
+    redirect_to organizers_root_path, notice: "会員情報を削除しました"
+  end
+
   private
   def participant_params
     params.require(:participant).permit(:nickname, :telephone_number, :is_deleted, :email)

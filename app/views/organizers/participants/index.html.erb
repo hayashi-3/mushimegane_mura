@@ -19,10 +19,10 @@
               <td><%= p.telephone_number %></td>
               <td><%= p.email %></td>
               <td>
-                <% if p.is_deleted == true %>
-                  退会済
-                <% else %>
+                <% if p.is_deleted == false %>
                   在籍中
+                <% else %>
+                  退会済
                 <% end %>
               </td>
             </tr>
