@@ -2,7 +2,7 @@ class Public::EventCommentsController < ApplicationController
     before_action :authenticate_participant!
 
 	def create
-	  @event = Event.where(id: params[:id])
+	  @event = Event.find(params[:event_id])
 	  @event_comment = current_participant.event_comments.new(event_comment_params)
 	  @event_comment.participant_id = current_participant.id
 	  @event_comment.event_id = @event.id
