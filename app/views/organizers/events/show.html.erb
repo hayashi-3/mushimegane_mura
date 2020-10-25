@@ -1,42 +1,28 @@
 <div class="container mt-4">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-3 mt-4">
       <%= attachment_image_tag @event, :image , fallback:"no_image.jpg", size:'200x200'%>
     </div>
     
     <div class="col-md-9">
-      <table class="table">
-
-        <thead>
-          <tr>
-            <th>イベント名</th>
-            <th>イベント内容</th>
-            <th>開催日時</th>
-            <th>参加上限人数</th>
-            <th>開催状況</th>
-            <th>イベント内容最終更新日時</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td><%= @event.event_name %></td>
-            <td><%= @event.content %></td>
-            <td><%= l @event.date_and_time %></td>
-            <td>　<%= @event.number_of_reservations %>人</td>
+      <h3>イベント詳細</h3>
+        <div class="show-text">
+            <p>イベント名：<%= @event.event_name %></p>
+            <p>イベント内容：<%= @event.content %></p>
+            <p>開催日時：<%= l @event.date_and_time %></p>
+            <p>参加上限人数：<%= @event.number_of_reservations %>人</p>
+            <p>開催状況：
               <% if !(@event.is_active == false) && @event.date_and_time >= DateTime.now %>
                 <td>開催前</td>
               <% else %>
                 <td>終了</td>
               <% end %>
-            <td><%= l @event.updated_at %>
-          </tr>
-        </tbody>
-
-      </table>
+            </p>
+            <p>イベント内容最終更新日時：<%= l @event.updated_at %></p>
+        </div>
     
-        <%= link_to '編集する', edit_organizers_event_path, class: "btn btn-info btn-md" %>
-        <%= link_to '削除する', organizers_event_path, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn btn-danger btn-md" %>
+        <%= link_to '編集する', edit_organizers_event_path, class: "btn btn-info btn-md mt-4" %>
+        <%= link_to '削除する', organizers_event_path, method: :delete, data: { confirm: "本当に削除してもよろしいですか？" }, class: "btn btn-danger btn-md mt-4" %>
     </div>
   </div>
 </div>
