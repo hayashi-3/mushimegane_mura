@@ -1,6 +1,6 @@
 <div class="container">
   <div class="col-md-11 mt-4">
-  <h4>開催前のイベント一覧(直近のものから)</h4>
+  <h4>直近のイベント情報</h4>
     <table class="table mt-5">
       <% if @events.present? %>
         <thead>
@@ -26,7 +26,7 @@
                 <% if !(event.is_active == false) %>
                   開催前
                 <% else %>
-                  開催終了
+                  イベントを終了にしています
                 <% end %>
               </td>
               <td><%= link_to "予約者一覧",organizers_event_reservations_path(event,@reservation)%></td>

@@ -35,8 +35,8 @@
 
 		<!-- 開催ステータス -->
 		<div class="form-group">
-			<%= f.label :is_active, "予約状況"%><br>
-			<%= f.select :is_active, {'予約受付中': true, '終了': false}, { class: 'form-control' , required: true } %>
+			<%= f.label :is_active, "開催状況"%><br>
+			<%= f.select :is_active, {'開催前': true, '終了': false}, { class: 'form-control' , required: true } %>
 		</div>
 
 		<%= f.submit '変更を登録する', data: { confirm: "この内容で変更しますか？" }, class:"btn btn-info btn-md" %>

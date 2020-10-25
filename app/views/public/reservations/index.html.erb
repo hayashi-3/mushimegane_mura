@@ -24,7 +24,7 @@
               <td><%= link_to "イベントキャンセル", participant_reservation_path(event_id: r.id, id: current_participant.id), method: :delete, "data-confirm" => "本当にキャンセルしてもよろしいですか？", class: "btn btn-danger btn-md" %></td>
             <% end %>
           <% else %>
-            <td>開催終了</td>
+            <td>終了</td>
           <% end %>
         </tr>
       <% end %>
