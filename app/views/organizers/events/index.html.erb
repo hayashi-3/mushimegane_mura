@@ -6,13 +6,13 @@
         <tr>
           <th>ID</th>
           <th>イベント画像</th>
-          <th>イベント名</th>
-          <th class="col-xs-3">内容</th>
-          <th>日時</th>
-          <th>参加可能人数</th>
-          <th>開催状況</th>
-          <th>予約人数/予約上限</th>
-          <th></th>
+          <th class="col-md-2">イベント名</th>
+          <th class="col-md-4">内容</th>
+          <th class="col-md-1">日時</th>
+          <th class="col-md-1">受付人数</th>
+          <th class="col-md-1">開催状況</th>
+          <th class="col-md-1">予約人数/予約上限</th>
+          <th class="col-md-1"></th>
         </tr>
       </thead>
       <tbody>
@@ -23,7 +23,7 @@
             <td><%= link_to event.event_name, organizers_event_path(event.id)%></td>
             <td style="word-wrap:break-word;"><%= event.content %></td>
             <td><%= l event.date_and_time %></td>
-            <td>　　<%= event.number_of_reservations %>人</td>
+            <td>　<%= event.number_of_reservations %>人</td>
             <% if !(event.is_active == false) && event.date_and_time >= DateTime.now %>
               <td>　開催前</td>
             <% else %>
