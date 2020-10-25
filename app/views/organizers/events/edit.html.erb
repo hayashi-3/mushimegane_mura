@@ -24,7 +24,7 @@
 		<!-- 　開催日時　 -->
 		<div class="form-group">
 			<%= f.label :date_and_time, "日時(過去の日時では登録できません)"%><br>
-			<%= f.datetime_select :date_and_time, autofocus: true%>
+			<%= f.datetime_select :date_and_time,{:minute_step => 30}, autofocus: true%>
 		</div>
 
 　　　　　　　<!-- 参加人数  -->
