@@ -12,6 +12,11 @@ li {
   background-color: rgb(201, 176, 158);
 }
 
+.main-vs-zoom {
+  height: 500px;
+  width: 1410px;
+}
+
 #welcom {
 	font-size: 50px;
 	font-family: 'M PLUS Rounded 1c', sans-serif;
@@ -111,4 +116,40 @@ li {
   width: 60%;
   height: 570px;
   margin: 0 auto;
+}
+
+@media screen and (max-width:425px) {
+
+  #welcom {
+    display: none;
+    }
+
+  .main-vs-zoom {
+    height: 250px;
+    width: 100%;
+    padding-top: 30px;
+  }
+
+  .top{
+    display:none;
+  }
+
+  .parson-text {
+    height: 100%;
+    width: 300px;
+    font-size: 20px;
+    color: white;
+    float: none;
+  }
+  
+  .parson-img {
+    background-image: image-url('dog.jpg');
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-position: center;
+    background-size: cover;
+    margin-left: 30px;
+  }
+
 }

@@ -108,3 +108,36 @@
   font-size: 15px;
   margin-bottom: 10px;
 }
+
+/* タブレット縦置きサイズ（768px）以下の際に適用される設定 */
+@media screen and (max-width:768px) {
+  .social i {
+    color: red;
+  }
+}
+/* スマートフォンサイズ（425px）以下の際に適用される設定 */
+@media screen and (max-width:425px) {
+  header {
+    background-color: rgb(116, 33, 8);
+    height: 50px;
+    width: 100%;
+   }
+  
+   .nav-link-logo {
+     height: 30px;
+     width: 100px;
+   }
+
+  .navbar-right {
+    margin-left: 50px;
+  }
+
+  .fixed-bottom {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 20px;
+    background-color:  rgb(116, 33, 8);
+  }
+}
