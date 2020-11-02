@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Participants::SessionsController < Devise::SessionsController
+  def new_guest
+    participant = Participant.guest
+    sign_in participant
+    redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
   # before_action :configure_sign_in_params, only: [:create]
   # GET /resource/sign_in
   # def new

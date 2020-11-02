@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     sessions: 'participants/sessions'
   }
 
+  devise_scope :participant do
+    post 'participants/guest_sign_in', to: 'participants/sessions#new_guest'
+  end
+
   namespace :organizers do
     root 'homes#top'
     resources :participants, only: [:index, :show, :edit, :update] do
