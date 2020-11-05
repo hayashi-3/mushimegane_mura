@@ -23,4 +23,19 @@ class Event < ApplicationRecord
     end
   end
 
+  def self.search(search,word)
+    if search == "forward_match"
+      @event = Event.where("event_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @event = Event.where("event_name LIKE?","%#{word}")
+    elsif search == "perfect_match"
+      @event = Event.where("#{word}")
+    elsif search == "partial_match"
+      @event = Event.where("event_name LIKE?","%#{word}%")
+    else
+      @event = Event.all
+    end
+  end
+end
+
 end
