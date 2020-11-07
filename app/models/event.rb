@@ -36,6 +36,5 @@ class Event < ApplicationRecord
       @event = Event.all
     end
   end
-end
 
 end
