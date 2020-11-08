@@ -23,18 +23,14 @@ class Event < ApplicationRecord
     end
   end
 
-  def self.search(search,word)
-    if search == "forward_match"
-      @event = Event.where("event_name LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @event = Event.where("event_name LIKE?","%#{word}")
-    elsif search == "perfect_match"
-      @event = Event.where("#{word}")
-    elsif search == "partial_match"
-      @event = Event.where("event_name LIKE?","%#{word}%")
-    else
-      @event = Event.all
-    end
+  scope :search, -> (search_params) do      #scopeでsearchメソッドを定義。(search_params)は引数
+    return if search_params.blank?      #検索フォームに値がなければ以下の手順は行わない
+
+    event_name_like(search_params[:event_name])
+      .date_and_time(search_params[:date_and_time])#下記で定義しているscopeメソッドの呼び出し。「.」で繋げている
   end
+
+  scope :event_name_like, -> (event_name) { where('event_name LIKE ?', "%#{event_name}%") if event_name.present? }  #scopeを定義。
+  scope :date_and_time, -> (date_and_time) { where('date_and_time') if date_and_time.present? }
 
 end

@@ -1,0 +1,10 @@
+<% unless @search_params.blank? %>
+  <% @events.each do |e| %>
+    <tr>
+      <td><%= l e.date_and_time %></td>
+      <td><%= e.event_name %></td>
+    </tr>
+  <% end %>
+<% else %>
+  <p>該当するイベントは見つかりませんでした。</p>
+<% end %>
