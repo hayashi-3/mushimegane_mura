@@ -3,16 +3,20 @@
   <div>虫めがね村では哲学書や教養書を取り扱った読書会を開催しています。当サイトは会員制で、会員登録後に読書会の予約ができます。<br>
     イベントの様子や主催者については<%= link_to "こちら", root_path, class: "link-about" %>をご覧ください。
   <div>
+
+  <div class="container mt-3">イベントを検索！</div>
   <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
-  <%= f.label :date_and_time, "開催日時" %>
-  <%= f.date_field :date_and_time %>
+    <%= f.label :check_in, "イベント開催日時" %>
+    <%= f.date_field :date_and_time_from %> ~
+    <%= f.date_field :date_and_time_to %>
 
-  <%= f.label :event_name, "イベント名" %>
-  <%= f.text_field :event_name %>
+    <%= f.label :event_name, "イベント名" %>
+    <%= f.text_field :event_name %>
 
-  <%= submit_tag '検索', class: "button" %>
-<% end %>
+    <%= submit_tag '検索', class: "button" %>
+  <% end %>
+
   <table class="table mt-5">
     <% if @events.present? %>
       <thead>

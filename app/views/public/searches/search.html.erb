@@ -1,10 +1,20 @@
-<% unless @search_params.blank? %>
-  <% @events.each do |e| %>
-    <tr>
-      <td><%= l e.date_and_time %></td>
-      <td><%= e.event_name %></td>
-    </tr>
-  <% end %>
-<% else %>
+<% if @search_params.blank? %>
   <p>該当するイベントは見つかりませんでした。</p>
+<% else %>
+  <table>
+    <thead>
+      <th></th>
+      <th>開催日時</th>
+      <th>イベント名</th>
+    </thead>
+    <% @events.each do |e| %>
+      <tbody>
+        <tr>
+          <td><%= attachment_image_tag e, :image , fallback:"no_image.jpeg", size:'100x100'%></td>
+          <td><%= l e.date_and_time %></td>
+          <td><%= link_to e.event_name, event_path(e.id)%></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
 <% end %>

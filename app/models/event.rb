@@ -27,10 +27,11 @@ class Event < ApplicationRecord
     return if search_params.blank?      #検索フォームに値がなければ以下の手順は行わない
 
     event_name_like(search_params[:event_name])
-      .date_and_time(search_params[:date_and_time])#下記で定義しているscopeメソッドの呼び出し。「.」で繋げている
+      .date_and_time_from(search_params[:date_and_time_from])#下記で定義しているscopeメソッドの呼び出し。「.」で繋げている
+      .date_and_time_to(search_params[:date_and_time_to])
   end
 
   scope :event_name_like, -> (event_name) { where('event_name LIKE ?', "%#{event_name}%") if event_name.present? }  #scopeを定義。
-  scope :date_and_time, -> (date_and_time) { where('date_and_time') if date_and_time.present? }
-
+  scope :date_and_time_from, -> (from) { where('? <= date_and_time',from) if from.present? }
+  scope :date_and_time_to, -> (to) { where('date_and_time <= ?', to) if to.present? }
 end
