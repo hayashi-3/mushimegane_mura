@@ -32,6 +32,6 @@ class Event < ApplicationRecord
   end
 
   scope :event_name_like, -> (event_name) { where('event_name LIKE ?', "%#{event_name}%") if event_name.present? }  #scopeを定義。
-  scope :date_and_time_from, -> (from) { where('? <= date_and_time',from) if from.present? }
+  scope :date_and_time_from, -> (from) { where('? <= date_and_time', from) if from.present? }
   scope :date_and_time_to, -> (to) { where('date_and_time <= ?', to) if to.present? }
 end

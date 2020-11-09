@@ -4,7 +4,7 @@
     イベントの様子や主催者については<%= link_to "こちら", root_path, class: "link-about" %>をご覧ください。
   <div>
 
-  <div class="container mt-3">イベントを検索！</div>
+  <div class="seach">イベントを検索！</div>
   <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
     <%= f.label :check_in, "イベント開催日時" %>
