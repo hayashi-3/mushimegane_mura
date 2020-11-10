@@ -4,34 +4,34 @@
 	
 		<%= form_with model: @event, url: organizers_events_path, method: :post, local: true do |f| %>
 		  <%= render 'layouts/error_messages', model: f.object %>
-            <!-- イベント画像 -->
-            <div class="form-group">
+      <!-- イベント画像 -->
+      <div class="form-group">
 				<%= attachment_image_tag @event, :image, :fill, 100, 100 %>
 				<%= f.attachment_field :image, placeholder: "Image" %>
 			</div>
 
 			<!-- イベント名 -->
 			<div class="form-group">
-                <%= f.label :event_name, "イベント名"%><br>
-                <%= f.text_field :event_name, :size=>"40", autofocus: true %>
+				<%= f.label :event_name, "イベント名"%><br>
+				<%= f.text_field :event_name, :size=>"40", autofocus: true %>
 			</div>
 
 			<!-- イベント内容説明 -->
 			<div class="form-group">
-                <%= f.label :content, "イベント内容"%><br>
-                <%= f.text_area :content, :size=>"40", autofocus: true%>
+				<%= f.label :content, "イベント内容"%><br>
+				<%= f.text_area :content, :size=>"40", autofocus: true%>
 			</div>
 
 			<!-- 　開催日時　 -->
 			<div class="form-group">
-                <%= f.label :date_and_time, "日時(過去の日時では登録できません)"%><br>
-                <%= f.datetime_select :date_and_time,{:minute_step => 30}, autofocus: true%>
+				<%= f.label :date_and_time, "日時(過去の日時では登録できません)"%><br>
+				<%= f.datetime_select :date_and_time,{:minute_step => 30}, autofocus: true%>
 			</div>
 
 			<!-- 参加人数  -->
-            <div class="form-group">
-                <%= f.label :number_of_reservations, "参加上限人数(半角で入力してください)"%><br>
-                <%= f.text_field :number_of_reservations, autofocus: true %>
+      <div class="form-group">
+				<%= f.label :number_of_reservations, "参加上限人数(半角で入力してください)"%><br>
+				<%= f.text_field :number_of_reservations, autofocus: true %>
 			</div>
 			
 			<%= f.submit '新規登録',class:"btn btn-info btn-md" %>
