@@ -76,6 +76,7 @@ gem 'pry-rails'
 gem 'rubocop'
 gem 'jquery-rails'
 gem 'dotenv-rails'
+gem 'refile-s3'
 group :production do
   gem 'mysql2'
 end
