@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     sessions: 'organizers/sessions'
   }
 
+  devise_scope :organizer do
+    post 'organizers/guest_sign_in', to: 'organizers/sessions#new_guest'
+  end
+
   devise_for :participants, controllers: {
     registrations: 'participants/registrations',
     sessions: 'participants/sessions'

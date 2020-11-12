@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class Organizers::SessionsController < Devise::SessionsController
+  def new_guest
+    organizer = Organizer.guest
+    sign_in organizer
+    redirect_to organizers_events_path, notice: 'ゲストユーザーとしてログインしました。'
+  end
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
