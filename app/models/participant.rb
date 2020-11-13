@@ -5,6 +5,7 @@ class Participant < ApplicationRecord
   
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  validates_acceptance_of :agreement, allow_nil: false, on: :create
 
   def self.guest
     find_or_create_by!(nickname: 'ゲスト', telephone_number: '09098766543', email: 'guest@example.com') do |participant|

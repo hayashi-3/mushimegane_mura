@@ -7,6 +7,7 @@ ja:
         nickname: ニックネーム
         telephone_number: 電話番号
         email: Eメール
+        agreement: 利用規約
         encrypted_password: パスワード
         reset_password_token: パスワード（確認用）
         confirmation_sent_at: パスワード確認送信時刻

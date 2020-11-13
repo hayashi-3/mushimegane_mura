@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   devise_scope :participant do
     post 'participants/guest_sign_in', to: 'participants/sessions#new_guest'
+    get '/contract' => 'participants/registrations#contract'
   end
 
   namespace :organizers do

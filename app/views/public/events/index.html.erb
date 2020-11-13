@@ -8,8 +8,8 @@
   <%= form_with(scope: :search, url: search_path, method: :get, local: true) do |f| %>
 
     <%= f.label :date_and_time, "イベント開催日時" %>
-    <%= f.date_field :date_and_time_from %> ~
-    <%= f.date_field :date_and_time_to %>
+    <%= f.date_field :date_and_time_from, value: @serch_params %> ~
+    <%= f.date_field :date_and_time_to, value: @serch_params %>
 
     <%= f.label :event_name, "イベント名" %>
     <%= f.text_field :event_name %>

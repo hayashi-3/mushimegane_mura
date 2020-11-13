@@ -1,6 +1,7 @@
 class Public::SearchesController < ApplicationController
   def search
     @search_params = event_search_params  #検索結果の画面で、フォームに検索した値を表示するために、paramsの値をビューで使えるようにする
+    byebug
     @events = Event.search(@search_params)#Eventモデルのsearchを呼び出し、引数としてparamsを渡している。
   end
 
