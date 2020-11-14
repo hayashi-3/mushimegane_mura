@@ -1,6 +1,7 @@
 class Participant < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  # バリデーションは新規会員登録フォームの順番になるようにしている。
   validates :nickname, :telephone_number, presence: true
   
   devise :database_authenticatable, :registerable,
