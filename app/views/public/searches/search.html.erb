@@ -1,6 +1,4 @@
-<% if @search_params.blank? %>
-  <p>該当するイベントは見つかりませんでした。</p>
-<% else %>
+<% if @search_params.present? %>
   <table>
     <thead>
       <th></th>
@@ -17,4 +15,6 @@
       </tbody>
     <% end %>
   </table>
+<% else %>
+  <p>該当するイベントは見つかりませんでした。</p>
 <% end %>

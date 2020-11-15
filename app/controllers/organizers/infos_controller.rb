@@ -1,7 +1,8 @@
 class Organizers::InfosController < ApplicationController
   before_action :authenticate_organizer!
 
-  def index     
+  def index
+    @infos = Info.order(id: "DESC").page(params[:page]).per(20)
   end
 
   def new
