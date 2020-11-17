@@ -20,8 +20,11 @@ Rails.application.routes.draw do
   namespace :organizers do
     root 'homes#top'
     resources :participants, only: [:index, :show, :edit, :update] do
-      resources :infos, only: [:index, :new, :create]
+      resources :infos, only: [:show, :new, :create]
+      post '/back' => 'infos#back'
+      post '/confirm' => 'infos#confirm'
     end
+    get '/infos' => 'infos#index'
     resources :events do
       resources :reservations, only: [:index, :destroy]
     end

@@ -1,5 +1,7 @@
 class Info < ApplicationRecord
   belongs_to :participant
 
-  validates :message, presence: true
+  with_options presence: true do
+    validates :message
+  end
 end

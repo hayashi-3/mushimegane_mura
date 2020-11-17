@@ -7,7 +7,7 @@ class Public::SearchesController < ApplicationController
   private
 
   def event_search_params
-    params.fetch(:search, {}).permit(:event_name, :date_and_time_from, :date_and_time_to,)
+    params.fetch(:search, {}).permit(:event_name, :date_and_time_from, :date_and_time_to)
     #fetch(:search, {})と記述することで、検索フォームに値がない場合はnilを返し、エラーが起こらなくなる
     #ここでの:searchには、フォームから送られてくるparamsの値が入っている
   end

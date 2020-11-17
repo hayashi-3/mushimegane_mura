@@ -31,7 +31,9 @@ class Event < ApplicationRecord
       .date_and_time_to(search_params[:date_and_time_to])
   end
 
-  scope :event_name_like, -> (event_name) { where('event_name LIKE ?', "%#{event_name}%") if event_name.present? }  #scopeを定義。
+  scope :event_name_like, -> (event_name) { where('event_name LIKE ?', "%#{event_name}%") if event_name.present? }  #scopeを定義
   scope :date_and_time_from, -> (from) { where('? <= date_and_time', from) if from.present? }
-  scope :date_and_time_to, -> (to) { where('date_and_time <= ?', to) if to.present? }
+  scope :date_and_time_to, -> (to) { where('date_and_time < ?', (Date.parse(to)+1).to_s) if to.present? }
+  # ('? <= date_and_time', from)の場合は日付の取得が◯月◯日の０時０分以下になってしまう。その為、< 実際に検索した日付+1日未満のものを探すようにする。
+  # 入力された値(to)は文字列になっている為、日付に変換する。parseにて(to)を変換＋１して.to_sで文字列に変換する
 end
