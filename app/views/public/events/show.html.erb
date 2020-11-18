@@ -44,7 +44,7 @@
                 <td><%= e.comment %></td>
                 <td>
                   <% if e.participant_id == current_participant.id %>
-                    <%= link_to "コメント削除",event_event_comments_path(@event,@event_comment), method: :delete, "data-confirm" => "コメント削除しますか？",class: "btn btn-danger btn-md" %>
+                    <%= link_to "コメント削除",event_event_comment_path(@event, e), method: :delete, "data-confirm" => "コメント削除しますか？",class: "btn btn-danger btn-md" %>
                   <% end %>
                 </td>
             </tr>

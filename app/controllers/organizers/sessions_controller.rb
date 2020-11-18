@@ -4,7 +4,7 @@ class Organizers::SessionsController < Devise::SessionsController
   def new_guest
     organizer = Organizer.guest
     sign_in organizer
-    redirect_to organizers_events_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to organizers_root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -31,7 +31,7 @@ class Organizers::SessionsController < Devise::SessionsController
   # end
   private
   def after_sign_in_path_for(resource)
-    organizers_events_path
+    organizers_root_path
   end
 
   def after_sign_out_path_for(resource)

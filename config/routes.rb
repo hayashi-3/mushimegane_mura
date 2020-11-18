@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
     resources :events do
       resources :reservations, only: [:new, :create]
-      resource :event_comments, only: [:create, :destroy]
+      resources :event_comments, only: [:create, :destroy]
     end
     
     resources :participants, only: [:show, :edit, :update] do

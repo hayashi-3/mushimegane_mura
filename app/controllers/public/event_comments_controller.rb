@@ -15,7 +15,7 @@ class Public::EventCommentsController < ApplicationController
 
 	def destroy
       @event = Event.find(params[:event_id])
-      @event_comment = current_participant.event_comments.find_by(params[:participant_id])
+      @event_comment = current_participant.event_comments.find(params[:id])
       @event_comment.destroy
       redirect_back(fallback_location: root_path)
 	end

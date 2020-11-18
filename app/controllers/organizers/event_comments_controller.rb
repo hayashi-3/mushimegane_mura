@@ -5,8 +5,8 @@ class Organizers::EventCommentsController < ApplicationController
     @event_comments = EventComment.all
   end
 
-  def destroy
-    
+  def update
+    @event_comment = Event_comment.find(params[:event_comment])
   end
 
   private
