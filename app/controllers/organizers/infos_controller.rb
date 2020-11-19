@@ -37,7 +37,7 @@ class Organizers::InfosController < ApplicationController
     @info.participant_id = @participant.id
     if @info.save
       InfoMailer.info_mail(@info, @participant).deliver_now
-      redirect_to organizers_participant_info_path(@info.id)
+      redirect_to organizers_participant_info_path(@participant, @info)
     else
       render :confirm
     end
