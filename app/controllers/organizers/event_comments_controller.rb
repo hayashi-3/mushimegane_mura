@@ -6,7 +6,6 @@ class Organizers::EventCommentsController < ApplicationController
   end
 
   def update
-    @event_comment = Event_comment.find(params[:event_comment])
   end
 
   private

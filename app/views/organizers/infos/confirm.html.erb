@@ -7,14 +7,14 @@
 	<dd><%= @info.message %></dd>
 </dl>
 
-<% form_with @info, url: organizers_infos_back_path, method: :post, local: true do |f| %>
-	<% f.hidden_field :participant_id %>
-	<% f.hidden_field :message %>
+<%= form_with model: @info, url: organizers_participant_back_path, method: :post, local: true do |f| %>
+	<%= f.hidden_field :participant_id %>
+	<%= f.hidden_field :message %>
 	<%= f.submit '入力画面に戻る' %>
 <% end %>
 
-<% form_with @info, url: organizers_infos_path, method: :post, local: true do |f| %>
-	<% f.hidden_field :participant_id %>
-	<% f.hidden_field :mesage %>
-	<% f.submit '送信する' %>
+<%= form_with model: @info, url: organizers_participant_infos_path, method: :post, local: true do |f| %>
+	<%= f.hidden_field :participant_id %>
+	<%= f.hidden_field :message %>
+	<%= f.submit '送信する' %>
 <% end %>

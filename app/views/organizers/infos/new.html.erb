@@ -1,15 +1,15 @@
-<%= form_with model: @info, url: organizers_participant_confirm_path, local: true do |f| %>
+<%= form_with model: @info, url: organizers_participant_confirm_path, method: :post, local: true do |f| %>
 
   <div class="form-group mt-4">
     <%= f.label :email, '送信先メールアドレス' %>
     <%= @participant.email %>
   </div>
 
- <div class="form-group">
-   <%= f.label :message, '会員への連絡事項' %>
-   <%= f.text_area :message, size: '10x10', class: 'form-control' %>
- </div>
+  <div class="form-group">
+    <%= f.label :message, '会員への連絡事項' %>
+    <%= f.text_area :message, size: '10x10', class: 'form-control' %>
+  </div>
 
-  <%= f.submit '送信', class: "btn btn-info btn-md" %>
+  <%= f.submit '確認画面へ', class: "btn btn-info btn-md" %>
 
 <% end %>

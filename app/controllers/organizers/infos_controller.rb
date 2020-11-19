@@ -10,19 +10,24 @@ class Organizers::InfosController < ApplicationController
     @participant = Participant.find(params[:participant_id])
   end
 
+  def show
+  end
+
   def confirm
     @info = Info.new(info_params)
-    @participant = Participant.find(params[:participant_id])
+    @info.participant_id = params[:participant_id]
     session[:info] = @info
-      if @info.invalid?
-        render :new
-      end
+    if @info.invalid?
+      @participant = Participant.find(params[:participant_id])
+      render :new
+    end
   end
 
   def back
     @info = Info.new(session[:info])
-    @participant = Participant.find(params[:participant_id])
+    @info.participant_id = params[:participant_id]
     session.delete(:info)
+    @participant = Participant.find(params[:participant_id])
 		render :new
   end
 
@@ -32,10 +37,9 @@ class Organizers::InfosController < ApplicationController
     @info.participant_id = @participant.id
     if @info.save
       InfoMailer.info_mail(@info, @participant).deliver_now
-      redirect_to infos_path
+      redirect_to organizers_participant_info_path(@info.id)
     else
-      flash.now[:notice] = '入力に誤りがあります'
-      render :new
+      render :confirm
     end
   end
 
