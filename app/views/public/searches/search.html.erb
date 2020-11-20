@@ -1,20 +1,19 @@
-<% if @search_params.present? %>
-  <table>
-    <thead>
-      <th></th>
-      <th>開催日時</th>
-      <th>イベント名</th>
-    </thead>
-    <% @events.each do |e| %>
-      <tbody>
-        <tr>
-          <td><%= attachment_image_tag e, :image , fallback:"no_image.jpeg", size:'100x100'%></td>
-          <td><%= l e.date_and_time %></td>
-          <td><%= link_to e.event_name, event_path(e.id)%></td>
-        </tr>
-      </tbody>
-    <% end %>
-  </table>
-<% else %>
-  <p>該当するイベントは見つかりませんでした。</p>
-<% end %>
+<div class="container mt-5">
+<h4>検索結果：<%= @events.count %>件</h4>
+<table class="table mt-5">
+  <thead>
+    <th></th>
+    <th>　開催日時</th>
+    <th>イベント名</th>
+  </thead>
+  <% @events.each do |e| %>
+    <tbody>
+      <tr>
+        <td><%= attachment_image_tag e, :image , fallback:"no_image.jpeg", size:'100x100'%></td>
+        <td><%= l e.date_and_time %></td>
+        <td><%= link_to e.event_name, event_path(e.id)%></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+</div>
