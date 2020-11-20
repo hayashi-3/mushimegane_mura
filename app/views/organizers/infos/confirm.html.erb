@@ -13,7 +13,7 @@
 	<%= f.submit '入力画面に戻る' %>
 <% end %>
 
-<%= form_with model: @info, url: organizers_participant_infos_path, method: :post, local: true do |f| %>
+<%= form_with model: @info, url: organizers_participant_infos_path(@info.participant_id,@info), method: :post, local: true do |f| %>
 	<%= f.hidden_field :participant_id %>
 	<%= f.hidden_field :message %>
 	<%= f.submit '送信する' %>

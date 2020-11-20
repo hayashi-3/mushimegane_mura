@@ -28,7 +28,6 @@ Rails.application.routes.draw do
     resources :events do
       resources :reservations, only: [:index, :destroy]
     end
-    resources :event_comments
   end
 
   scope module: :public do

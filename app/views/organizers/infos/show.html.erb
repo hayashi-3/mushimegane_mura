@@ -1,0 +1,15 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <h3>送信メール詳細</h3>
+      <div class="show-text">
+        <p>会員：<%= @info.participant.nickname %></p>
+        <p>宛先：<%= @info.participant.email %></p>
+        <p>イベント内容：<%= @info.message %></p>
+        <p>送信日時：<%= l @info.created_at %></p>
+        <%= link_to "メール送信一覧", organizers_infos_path %>
+      </div>
+    </div>
+  </div>
+</div>
+              

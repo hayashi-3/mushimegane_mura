@@ -2,6 +2,7 @@ class Organizers::InfosController < ApplicationController
   before_action :authenticate_organizer!
 
   def index
+    @participant = Participant.where(:id => params[:participant_id]).first
     @infos = Info.order(id: "DESC").page(params[:page]).per(20)
   end
 
@@ -11,6 +12,8 @@ class Organizers::InfosController < ApplicationController
   end
 
   def show
+    @info = Info.find(params[:id])
+    @participant = Participant.find(params[:participant_id])
   end
 
   def confirm

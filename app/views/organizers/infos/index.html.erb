@@ -1,14 +1,14 @@
 <h3>メール送信履歴一覧</h3>
 <table class= "table">
   <tr>
-    <th>送信先</th>
+    <th>送信先(クリックで送信内容の詳細を表示します)</th>
     <th>会員名</th>
     <th>送信内容</th>
     <th>送信日時</th>
   </tr>
   <% @infos.each do |i| %>
     <tr>
-      <td><%= i.participant.email %>
+      <td><%= link_to i.participant.email, organizers_participant_info_path(i.participant.id, i.id) %>
       <td><%= i.participant.nickname %></td>
       <td><%= i.message %></td>
       <td><%= l i.created_at %></td>
