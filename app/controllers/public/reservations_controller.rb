@@ -1,12 +1,12 @@
 class Public::ReservationsController < ApplicationController
   before_action :authenticate_participant!
-  before_action :correct_participant
+  before_action :correct_participant, only: [:index]
 
   def correct_participant
-      participant = Participant.find_by(params[:participant_id])
-      if current_participant != participant
-        redirect_to participant_path(current_participant)
-      end
+    participant = Participant.find(params[:participant_id])
+    if current_participant.id != participant.id
+      redirect_to participant_path(current_participant), notice: "閲覧権限がありません"
+    end
   end
 
   def index

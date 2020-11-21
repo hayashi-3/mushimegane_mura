@@ -14,8 +14,10 @@
     <%= f.label :event_name, "イベント名" %>
     <%= f.text_field :event_name %>
 
-    <%= submit_tag '検索', class: "button" %>
-  <% end %>
+    <%= f.button :type => "submit", style: "border-style: none;" do %>
+      <i class="fas fa-search"></i>
+    <% end %>
+    <% end %>
 
   <table class="table mt-5">
     <% if @events.present? %>
