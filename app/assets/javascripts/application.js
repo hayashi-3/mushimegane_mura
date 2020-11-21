@@ -17,7 +17,8 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(function() {
+// ハンバーガーメニュー
+$(document).on('turbolinks:load', function(){
   $('.menu-trigger').on('click', function(event) {
     $(this).toggleClass('active');
     $('#sp-menu').fadeToggle();
@@ -35,9 +36,8 @@ $(function() {
     });
   });
 
-// aboutページのズーム機能はzoom.jsへ移動→その方が読み込み速い？
+// aboutページのズーム機能はzoom.jsへ
   
-
 // aboutページのマーカー表示
  $(window).scroll(function (){
   $(".js-markerScrollAnimation").each(function(){
