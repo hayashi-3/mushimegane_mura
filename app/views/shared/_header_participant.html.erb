@@ -7,21 +7,31 @@
         <% end %>
       </li>
     </ul>
-    <div class="navbar-right">
-      <ul class="nav navbar">
-        <li class="nav-item">
-          <%= link_to "イベント一覧", events_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "マイページ", participant_path(current_participant), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "参加イベント", participant_reservations_path(current_participant), class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_participant_session_path, method: :delete, class: "nav-link" %>
-        </li>
+  </nav>
+  <div id="sp-menu">
+      <h2>目次<i class="fas fa-coffee"></i></h2>
+      <ul>
+        <li><%= link_to "イベント一覧", events_path, class: "far fa-calendar-alt" %></li>
+        <li><%= link_to "マイページ", participant_path(current_participant), class: "fas fa-user-circle" %></li>
+        <li><%= link_to "参加イベント", participant_reservations_path(current_participant), class: "far fa-comments" %></li>
+        <li><%= link_to "ログアウト", destroy_participant_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
       </ul>
     </div>
-  </nav>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
 </header>

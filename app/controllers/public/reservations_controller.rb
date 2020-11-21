@@ -3,7 +3,7 @@ class Public::ReservationsController < ApplicationController
   before_action :correct_participant
 
   def correct_participant
-    participant = Participant.find(current_participant.id)
+      participant = Participant.find_by(params[:participant_id])
       if current_participant != participant
         redirect_to participant_path(current_participant)
       end

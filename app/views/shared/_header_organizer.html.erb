@@ -1,19 +1,30 @@
 <header>
-  <ul class="nav justify-content-end">
-    <li class="nav-item mt-4">
-      <%= link_to "直近のイベント一覧", organizers_root_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item mt-4">
-      <%= link_to "イベント一覧", organizers_events_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item mt-4">
-      <%= link_to "イベント投稿", new_organizers_event_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item mt-4">
-      <%= link_to "会員一覧", organizers_participants_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item mt-4">
-      <%= link_to "ログアウト", destroy_organizer_session_path, method: :delete, class: "nav-link" %>
-    </li>
-  </ul>
+  <div id="sp-menu">
+      <h2>目次</h2>
+      <ul>
+        <li><%= link_to "直近のイベント一覧", organizers_root_path %></li>
+        <li><%= link_to "イベント一覧", organizers_events_path %></li>
+        <li><%= link_to "イベント投稿", new_organizers_event_path %></li>
+        <li><%= link_to "会員一覧", organizers_participants_path %></li>
+        <li><%= link_to "メール送信履歴一覧", organizers_infos_path %></li>
+        <li><%= link_to "ログアウト", destroy_organizer_session_path, method: :delete %></li>
+      </ul>
+    </div>
+
+    <div id="hm-icon">
+      <a class="menu-trigger" href="">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
+
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
 </header>

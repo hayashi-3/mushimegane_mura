@@ -31,8 +31,8 @@ header {
  }
 
 .navbar-right {
-  margin-left: 500px;
-  margin-top: 10px;
+  margin-left: 850px;
+  margin-top: 20px;
  }
 
 .nav-item :hover{
@@ -67,7 +67,7 @@ header {
   left: 0;
   width: 100%;
   height: 4px;
-  background-color: rgb(253, 251, 251);
+  background-color: white;
   border-radius: 4px;
 }
 .menu-trigger span:nth-of-type(1) {
@@ -82,7 +82,7 @@ header {
 .menu-trigger.active span:nth-of-type(1) {
   -webkit-transform: translateY(20px) rotate(-45deg);
   transform: translateY(20px) rotate(-45deg);
-  background-color: #fff;
+  background-color: rgb(109, 105, 105);
 }
 .menu-trigger.active span:nth-of-type(2) {
   opacity: 0;
@@ -90,7 +90,7 @@ header {
 .menu-trigger.active span:nth-of-type(3) {
   -webkit-transform: translateY(-20px) rotate(45deg);
   transform: translateY(-20px) rotate(45deg);
-  background-color: #fff;
+  background-color: rgb(109, 105, 105);
 }
 /* ------------------------ */
 /* ------ spメニュー ------ */
@@ -99,8 +99,8 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background: rgb(255, 255, 255);
-  color: rgb(102, 99, 99);
+  background:rgb(71, 70, 70);
+  color: white;
   width: 100%;
   min-height: 100%;
   display: none;
@@ -111,7 +111,7 @@ header {
   margin-bottom: 30px;
 }
 #sp-menu a{
-  color: rgb(187, 40, 40);
+  color: white;
   text-decoration: none;
   font-weight: bold;
 }
