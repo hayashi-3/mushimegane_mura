@@ -3,7 +3,7 @@ class Organizers::InfosController < ApplicationController
 
   def index
     @participant = Participant.where(:id => params[:participant_id]).first
-    @infos = Info.order(id: "DESC").page(params[:page]).per(20)
+    @infos = Info.order(id: "DESC").page(params[:page]).per(15)
   end
 
   def new
