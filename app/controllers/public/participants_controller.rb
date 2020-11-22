@@ -1,11 +1,20 @@
 class Public::ParticipantsController < ApplicationController
   before_action :authenticate_participant!
   before_action :correct_participant
+  before_action :guest_user, only: [:edit, :update, :unsubscribe]
 
   def correct_participant
     participant = Participant.find(params[:id])
     if current_participant != participant
       redirect_to participant_path(current_participant)
+    end
+  end
+
+  def guest_user
+    @participant = Participant.find_by(email: 'guest@example.com')
+    if @participant == current_participant
+      flash[:notice] = 'ゲストユーザーは編集・退会が出来ません'
+      redirect_to root_path
     end
   end
 

@@ -16,10 +16,10 @@
   <div id="sp-menu">
       <h2>目次<i class="fas fa-coffee"></i></h2>
       <ul>
-        <li><%= link_to "虫めがね村について", root_path, class: "fas fa-search" %></li>
-        <li><%= link_to "イベント一覧", events_path, class: "fas fa-book-open" %></li>
-        <li><%= link_to "新規会員登録", new_participant_registration_path, class: "far fa-user" %></li>
-        <li><%= link_to "ログイン", new_participant_session_path, class: "fas fa-sign-in-alt" %></li>
+        <li><%= link_to "虫めがね村について", root_path, class: "fas fa-search", data: {"turbolinks" => false} %></li>
+        <li><%= link_to "イベント一覧", events_path, class: "fas fa-book-open", data: {"turbolinks" => false} %></li>
+        <li><%= link_to "新規会員登録", new_participant_registration_path, class: "far fa-user", data: {"turbolinks" => false} %></li>
+        <li><%= link_to "ログイン", new_participant_session_path, class: "fas fa-sign-in-alt", data: {"turbolinks" => false} %></li>
       </ul>
     </div>
 

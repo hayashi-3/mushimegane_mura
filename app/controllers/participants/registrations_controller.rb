@@ -2,8 +2,17 @@
 
 class Participants::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :guest_user
   
   def contract   
+  end
+
+  def guest_user
+    @participant = Participant.find_by(email: 'guest@example.com')
+    if @participant == current_participant
+      flash[:notice] = 'ゲストユーザーは編集が出来ません'
+      redirect_to root_path
+    end
   end
   
   # before_action :configure_sign_up_params, only: [:create]
