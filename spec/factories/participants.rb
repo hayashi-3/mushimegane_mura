@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :participant do
     nickname { "test" }
-    sequence(:email) { |n| "test#{n}@example.com" }
+    email { "test@example.com" }
     telephone_number { "09098761234" }
     password { "testparticipant" }
-    agreement { "true" }
+    agreement { true }
   end
 end

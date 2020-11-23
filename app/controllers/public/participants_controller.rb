@@ -11,9 +11,9 @@ class Public::ParticipantsController < ApplicationController
   end
 
   def guest_user
-    @participant = Participant.find_by(email: 'guest@example.com')
+    @participant = Participant.find_by(email: "guest@example.com")
     if @participant == current_participant
-      flash[:notice] = 'ゲストユーザーは編集・退会が出来ません'
+      flash[:notice] = "ゲストユーザーは編集・退会が出来ません"
       redirect_to root_path
     end
   end

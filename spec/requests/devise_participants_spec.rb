@@ -1,48 +1,23 @@
 require 'rails_helper'
 
-RSpec.describe "ParticipantAuthentications", type: :request do
-  let(:participant) { create(:participant) }
-  let(:participant_params) { attributes_for(:participant) }
-  let(:invalid_participant_params) { attributes_for(:participant, name: "") }
+RSpec.describe Participant, type: :model do
+  before do 
+    @participant = build(:participant)
+  end
 
-  describe 'POST #create' do
-    before do
-      ActionMailer::Base.deliveries.clear
-    end
-    context 'パラメータが妥当な場合' do
-      it 'リクエストが成功すること' do
-        post participant_registration_path, params: { participant: participant_params }
-        expect(response.status).to eq 302
-      end
-
-      it 'createが成功すること' do
-        expect do
-          post participant_registration_path, params: { participant: participant_params }
-        end.to change(participant, :count).by 1
-      end
-
-      it 'リダイレクトされること' do
-        post participant_registration_path, params: { participant: participant_params }
-        expect(response).to redirect_to events_path
-      end
+  describe 'バリデーション' do
+    it 'nicknameとemailどちらも値が設定されていれば、OK' do
+      expect(@participant.valid?).to eq(true)
     end
 
-    context 'パラメータが不正な場合' do
-      it 'リクエストが成功すること' do
-        post participant_registration_path, params: { participant: invalid_participant_params }
-        expect(response.status).to eq 200
-      end
+    it 'nicknameが空だとNG' do
+      @participant.nickname = ""
+      expect(@participant.valid?).to eq(false)
+    end
 
-      it 'createが失敗すること' do
-        expect do
-          post participant_registration_path, params: { participant: invalid_participant_params }
-        end.to_not change(participant, :count)
-      end
-
-      it 'エラーが表示されること' do
-        post participant_registration_path, params: { participant: invalid_participant_params }
-        expect(response.body).to include "未入力事項があります。"
-      end
+    it 'emailが空だとNG' do
+      @participant.email = ""
+      expect(@participant.valid?).to eq(false)
     end
   end
 end
