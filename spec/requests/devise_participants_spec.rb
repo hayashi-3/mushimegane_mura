@@ -1,12 +1,12 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Participant, type: :model do
-  before do 
+  before do
     @participant = build(:participant)
   end
 
   describe 'バリデーション' do
-    it 'nicknameとemailどちらも値が設定されていれば、OK' do
+    it '全て値が設定されていれば、OK' do
       expect(@participant.valid?).to eq(true)
     end
 
