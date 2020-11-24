@@ -1,4 +1,4 @@
-$(document).on('turbolinks:load', function(){
+$(function() {
     $('.main-vs-zoom').okzoom({
       width: 200,
       height: 200,

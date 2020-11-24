@@ -1,12 +1,12 @@
 class Organizers::EventsController < ApplicationController
   before_action :authenticate_organizer!
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = Event.order("created_at DESC").page(params[:page]).per(5)
   end
 
   def show
-    @event = Event.find(params[:id])
   end
 
   def new
@@ -24,11 +24,9 @@ class Organizers::EventsController < ApplicationController
 
 
   def edit
-    @event = Event.find(params[:id])
   end
 
   def update
-    @event = Event.find(params[:id])
   if@event.update(event_params)
     redirect_to organizers_event_path(@event.id)
   else
@@ -38,7 +36,6 @@ class Organizers::EventsController < ApplicationController
   end
 
   def destroy
-    @event = Event.find(params[:id])
     @event.destroy
     redirect_to organizers_events_path, notice: "イベントを削除しました"
   end
@@ -46,6 +43,10 @@ class Organizers::EventsController < ApplicationController
   private
   def event_params
     params.require(:event).permit(:participant_id, :date_and_time, :event_name, :image, :is_active, :content, :number_of_reservations)
+  end
+
+  def set_event
+    @event = Event.find(params[:id])
   end
 
 end

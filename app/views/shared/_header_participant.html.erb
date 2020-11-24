@@ -11,15 +11,15 @@
   <div id="sp-menu">
       <h2>目次<i class="fas fa-coffee"></i></h2>
       <ul>
-        <li><%= link_to "イベント一覧", events_path, class: "far fa-calendar-alt", data: {"turbolinks" => false} %></li>
-        <li><%= link_to "マイページ", participant_path(current_participant), class: "fas fa-user-circle", data: {"turbolinks" => false} %></li>
-        <li><%= link_to "参加イベント", participant_reservations_path(current_participant), class: "far fa-comments", data: {"turbolinks" => false} %></li>
-        <li><%= link_to "ログアウト", destroy_participant_session_path, method: :delete, class: "fas fa-sign-out-alt", data: {"turbolinks" => false} %></li>
+        <li><%= link_to "イベント一覧", events_path, class: "far fa-calendar-alt" %></li>
+        <li><%= link_to "マイページ", participant_path(current_participant), class: "fas fa-user-circle" %></li>
+        <li><%= link_to "参加イベント", participant_reservations_path(current_participant), class: "far fa-comments" %></li>
+        <li><%= link_to "ログアウト", destroy_participant_session_path, method: :delete, class: "fas fa-sign-out-alt" %></li>
       </ul>
     </div>
 
     <div id="hm-icon">
-      <a class="menu-trigger" href="">
+      <a id="menu-trigger" href="">
         <span></span>
         <span></span>
         <span></span>

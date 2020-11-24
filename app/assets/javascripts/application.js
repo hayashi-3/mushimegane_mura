@@ -13,13 +13,12 @@
 //= require jquery
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require bootstrap-sprockets
 //= require_tree .
 
 // ハンバーガーメニュー
-$(document).on('turbolinks:load', function(){
-  $('.menu-trigger').on('click', function(event) {
+$(function() {
+  $('#menu-trigger').on('click', function(event) {
     $(this).toggleClass('active');
     $('#sp-menu').fadeToggle();
     event.preventDefault();
