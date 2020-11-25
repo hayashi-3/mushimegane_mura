@@ -21,41 +21,13 @@
 
   <body>
     <% if organizer_signed_in? %>
-      <main>
-        <div>
-          <%= notice %>
-          <%= alert %>
-        </div>
-        <%= render "shared/header_organizer" %>
-        <%= yield %>
-      </main>
+      <%= render "shared/header_organizer" %>
     <% elsif /\/organizers/ =~ request.fullpath %>
-      <main>
-        <div>
-          <%= notice %>
-          <%= alert %>
-        </div>
-        <%= render "shared/header_before_organizer" %>
-        <%= yield %>
-      </main>
+      <%= render "shared/header_before_organizer" %>
     <% elsif participant_signed_in? %>
-      <main>
-        <div>
-          <%= notice %>
-          <%= alert %>
-        </div>
-        <%= render "shared/header_participant" %>
-        <%= yield %>
-      </main>
+      <%= render "shared/header_participant" %>
     <% else %>
-      <main>
-        <div>
-          <%= notice %>
-          <%= alert %>
-        </div>
-        <%= render "shared/header_before_participant" %>
-        <%= yield %>
-      </main>
+      <%= render "shared/header_before_participant" %>
     <% end %>
       <footer class="fixed-bottom"></footer>
   </body>

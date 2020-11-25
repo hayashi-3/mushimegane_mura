@@ -1,10 +1,17 @@
-<header>
-  <ul class="nav justify-content-end">
-    <li class="nav-item mt-4">
-      <%= link_to 'ゲストログイン（閲覧用）', organizers_guest_sign_in_path, method: :post, class: "nav-link" %>
-    </li>
-    <li class="nav-item mt-4">
-      <%= link_to "ログイン", new_organizer_session_path, class: "nav-link" %>
-    </li>
-  </ul>
-</header>
+<main>
+  <div>
+    <%= notice %>
+    <%= alert %>
+  </div>
+  <header>
+    <ul class="nav justify-content-end">
+      <li class="nav-item mt-4">
+        <%= link_to 'ゲストログイン（閲覧用）', organizers_guest_sign_in_path, method: :post, class: "nav-link" %>
+      </li>
+      <li class="nav-item mt-4">
+        <%= link_to "ログイン", new_organizer_session_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </header>
+  <%= yield %>
+</main>
