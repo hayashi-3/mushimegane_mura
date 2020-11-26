@@ -2,6 +2,7 @@ class Public::ParticipantsController < ApplicationController
   before_action :authenticate_participant!
   before_action :correct_participant
   before_action :guest_user, only: [:edit, :update, :unsubscribe]
+  before_action :set_participant, only: [:show, :edit, :update]
 
   def correct_participant
     participant = Participant.find(params[:id])
@@ -19,15 +20,12 @@ class Public::ParticipantsController < ApplicationController
   end
 
   def show
-    @participant = Participant.find(params[:id])
   end
 
   def edit
-    @participant = Participant.find(params[:id])
   end
 
   def update
-    @participant = Participant.find(params[:id])
     if @participant.update(participant_params)
       redirect_to participant_path(participant_params), notice: "更新しました"
     else
@@ -48,6 +46,10 @@ class Public::ParticipantsController < ApplicationController
   private 
   def participant_params
     params.require(:participant).permit(:nickname, :email, :telephone_number, :is_deleted)
+  end
+
+  def set_participant
+    @participant = Participant.find(params[:id])
   end
 
 end

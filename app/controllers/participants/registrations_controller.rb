@@ -2,7 +2,7 @@
 
 class Participants::RegistrationsController < Devise::RegistrationsController
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :guest_user
+  before_action :guest_user, only: [:update]
   
   def contract   
   end

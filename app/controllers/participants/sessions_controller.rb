@@ -1,11 +1,22 @@
 # frozen_string_literal: true
 
 class Participants::SessionsController < Devise::SessionsController
+  # before_action :guest_user
+
   def new_guest
     participant = Participant.guest
     sign_in participant
     redirect_to root_path, notice: 'ゲストユーザーとしてログインしました。'
   end
+
+  # def guest_user
+  #   @participant = Participant.find_by(email: 'guest@example.com')
+  #   if @participant == current_participant
+  #     flash[:notice] = 'ゲストユーザーは編集が出来ません'
+  #     redirect_to root_path
+  #   end
+  # end
+
   # before_action :configure_sign_in_params, only: [:create]
   # GET /resource/sign_in
   # def new
