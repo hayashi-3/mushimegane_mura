@@ -1,6 +1,7 @@
 class Organizers::ParticipantsController < ApplicationController
   before_action :authenticate_organizer!
   before_action :guest_organizer, only: [:edit, :update]
+  before_action :set_participant, only: [:show, :edit, :update]
 
   def guest_organizer
     @organizer = Organizer.find_by(email: 'guest@organizer.com')
@@ -15,15 +16,12 @@ class Organizers::ParticipantsController < ApplicationController
   end
 
   def show
-    @participant = Participant.find(params[:id])
   end
 
   def edit
-    @participant = Participant.find(params[:id])
   end
 
   def update
-    @participant = Participant.find(params[:id])
   if@participant.update(participant_params)
     redirect_to organizers_participant_path(@participant.id), notice: "会員情報の更新ができました"
   else
@@ -35,4 +33,9 @@ class Organizers::ParticipantsController < ApplicationController
   def participant_params
     params.require(:participant).permit(:nickname, :telephone_number, :is_deleted, :email)
   end
+
+  def set_participant
+    @participant = Participant.find(params[:id])
+  end
+
 end

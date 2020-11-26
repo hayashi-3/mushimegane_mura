@@ -4,7 +4,6 @@ class Organizers::ReservationsController < ApplicationController
   def index
     @event = Event.find(params[:event_id])
     @reservations = @event.reservations.all
-    @participant = Participant.find_by(params[:participant_id])
   end
 
   def destroy
